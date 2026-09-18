@@ -3,7 +3,7 @@
     --card-bg: #0a0a0a;
     --accent-color: #d4af37; /* Metallic Gold */
     --text-color: #e0e0e0;
-    --locked-color: #2a2a2a;
+    --locked-color: #111;
     --success-color: #d4af37; 
     --error-color: #8b0000;
     --border-color: #1a1a1a;
@@ -14,7 +14,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     margin: 0;
-    padding: 40px 20px;
+    padding: 20px 15px; /* Reduced for mobile */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,17 +24,17 @@ body {
 
 header {
     text-align: center;
-    margin-bottom: 30px;
-    max-width: 850px;
+    margin-bottom: 20px;
+    max-width: 100%;
 }
 
 h1 {
     font-family: 'Cinzel', serif;
     color: var(--accent-color);
-    font-size: 42px;
-    letter-spacing: 8px;
+    font-size: clamp(28px, 6vw, 42px); /* Scales dynamically */
+    letter-spacing: clamp(3px, 1vw, 8px);
     text-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
-    margin-bottom: 0px;
+    margin: 0;
     font-weight: 700;
 }
 
@@ -42,7 +42,7 @@ h1 {
     font-family: 'Courier Prime', monospace;
     color: #fff;
     letter-spacing: 5px;
-    font-size: 18px;
+    font-size: clamp(14px, 4vw, 18px);
     margin-top: 10px;
 }
 
@@ -53,29 +53,31 @@ h1 {
     font-size: 14px;
     font-weight: bold;
     padding: 8px 20px;
-    margin: 15px 0;
+    margin: 15px 0 25px 0;
     letter-spacing: 4px;
     border: 1px solid var(--accent-color);
     box-shadow: 0 0 10px rgba(212, 175, 55, 0.1) inset;
 }
 
 .subtitle {
-    font-size: 12px;
+    font-size: 11px;
     color: #666;
     margin-top: 10px;
-    letter-spacing: 4px;
+    letter-spacing: 2px;
 }
 
 .warning-box {
     color: #d4af37;
     border: 1px solid rgba(212, 175, 55, 0.3);
-    padding: 20px;
+    padding: 15px;
     background-color: rgba(212, 175, 55, 0.03);
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     text-align: left;
-    line-height: 1.8;
+    line-height: 1.6;
     max-width: 900px;
-    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 13px;
     letter-spacing: 1px;
 }
 
@@ -86,7 +88,13 @@ h1 {
     max-width: 900px;
     width: 100%;
     overflow-x: auto;
-    padding-bottom: 0;
+    /* Hide scrollbar for a native app feel but keep it swipeable */
+    -ms-overflow-style: none;  
+    scrollbar-width: none; 
+}
+
+.tabs::-webkit-scrollbar {
+    display: none; 
 }
 
 .tab-btn {
@@ -94,7 +102,7 @@ h1 {
     color: #555;
     border: 1px solid var(--border-color);
     border-bottom: none;
-    padding: 16px 20px;
+    padding: 18px 20px; /* Taller for touch targets */
     cursor: not-allowed;
     font-family: 'Cinzel', serif;
     font-weight: bold;
@@ -105,7 +113,7 @@ h1 {
 }
 
 .tab-btn.unlocked {
-    background-color: #111;
+    background-color: #0c0c0c;
     color: #aaa;
     border-color: #333;
     cursor: pointer;
@@ -122,13 +130,17 @@ h1 {
     border-top: 3px solid var(--accent-color);
 }
 
+#panels-container {
+    width: 100%;
+    max-width: 900px;
+}
+
 .panel {
     display: none;
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
     border-top: 1px solid var(--accent-color);
-    padding: 40px;
-    max-width: 900px;
+    padding: clamp(20px, 5vw, 40px); /* Adjusts padding on mobile */
     width: 100%;
     box-sizing: border-box;
     box-shadow: 0 20px 50px rgba(0,0,0,0.9);
@@ -136,18 +148,18 @@ h1 {
 
 .panel.active {
     display: block;
-    animation: fadeIn 0.5s ease-in;
+    animation: fadeIn 0.4s ease-in;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
+    from { opacity: 0; transform: translateY(5px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 .panel h2 {
     font-family: 'Cinzel', serif;
     margin-top: 0;
-    font-size: 24px;
+    font-size: clamp(20px, 5vw, 24px);
     letter-spacing: 2px;
     color: var(--accent-color);
     border-bottom: 1px solid #222;
@@ -162,10 +174,10 @@ h1 {
 
 .audio-container {
     background: #000;
-    padding: 30px;
+    padding: 20px;
     text-align: center;
     border: 1px solid #222;
-    margin: 30px 0;
+    margin: 20px 0;
     box-shadow: inset 0 0 20px rgba(0,0,0,1);
 }
 
@@ -184,24 +196,25 @@ h1 {
 }
 
 .script-quote {
-    background: #000000;
+    background: #000;
     border-left: 3px solid var(--accent-color);
-    padding: 12px 18px;
+    padding: 12px 15px;
     margin: 15px 0;
     font-style: italic;
     color: #fff;
+    font-size: 14px;
 }
 
 .quiz-section, .milestone-section {
-    margin-top: 35px;
+    margin-top: 25px;
     border-top: 1px solid #222;
-    padding-top: 30px;
+    padding-top: 25px;
 }
 
 .milestone-section {
     background-color: rgba(212, 175, 55, 0.02);
     border: 1px solid rgba(212, 175, 55, 0.2);
-    padding: 30px;
+    padding: clamp(20px, 4vw, 30px);
     display: none;
 }
 
@@ -213,27 +226,31 @@ h1 {
 .milestone-section h3 {
     margin-top: 0;
     color: var(--accent-color);
-    font-size: 16px;
+    font-size: 15px;
     letter-spacing: 2px;
+    line-height: 1.4;
 }
 
+/* MOBILE OPTIMIZED INPUT */
 input[type="text"] {
     width: 100%;
-    background-color: #0a0a0a;
+    background-color: #050505;
     border: 1px solid #333;
     color: var(--accent-color);
-    padding: 18px;
+    padding: 16px;
     font-family: 'Courier Prime', monospace;
-    font-size: 18px;
+    font-size: 16px; /* Exactly 16px prevents iOS/Android auto-zoom on tap */
     font-weight: bold;
     letter-spacing: 2px;
     margin-top: 10px;
     box-sizing: border-box;
     transition: border-color 0.3s;
+    border-radius: 0; /* Prevents native mobile styling */
+    -webkit-appearance: none;
 }
 
 input[type="text"]::placeholder {
-    color: #333;
+    color: #444;
     font-weight: normal;
 }
 
@@ -247,22 +264,25 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active{
-    -webkit-box-shadow: 0 0 0 30px #0a0a0a inset !important;
+    -webkit-box-shadow: 0 0 0 30px #050505 inset !important;
     -webkit-text-fill-color: var(--accent-color) !important;
 }
 
+/* LARGE TOUCH TARGET BUTTONS */
 button.submit-btn, button.action-btn {
     background-color: transparent;
     color: #aaa;
     border: 1px solid #444;
-    padding: 15px 30px;
-    margin-top: 25px;
+    padding: 16px 20px;
+    margin-top: 20px;
     cursor: pointer;
     font-family: 'Cinzel', serif;
     font-weight: bold;
     letter-spacing: 2px;
     font-size: 14px;
     transition: all 0.3s ease;
+    width: 100%; /* Full width makes tapping much easier */
+    box-sizing: border-box;
 }
 
 button.submit-btn:hover {
@@ -274,7 +294,6 @@ button.submit-btn:hover {
 button.action-btn {
     border-color: var(--accent-color);
     color: var(--accent-color);
-    width: 100%;
 }
 
 button.action-btn:hover {
@@ -290,7 +309,7 @@ button.action-btn.complete {
 
 .status-msg {
     margin-top: 20px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
     padding: 15px;
     display: none;
@@ -298,14 +317,12 @@ button.action-btn.complete {
 }
 
 .status-msg.error {
-    display: block;
     color: var(--error-color);
     border-left: 4px solid var(--error-color);
     background: rgba(139, 0, 0, 0.1);
 }
 
 .status-msg.success {
-    display: block;
     color: var(--success-color);
     border-left: 4px solid var(--success-color);
     background: rgba(212, 175, 55, 0.05);
