@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOD MODE IQ TEST</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --card-bg: #111;
+            --accent-color: #ff0055;
+            --text-color: #e0e0e0;
+            --locked-color: #444;
+            --success-color: #00ff66;
+        }
+
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            max-width: 800px;
+        }
+
+        h1 {
+            color: var(--accent-color);
+            letter-spacing: 4px;
+            text-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
+        }
+
+        .warning {
+            color: #ffcc00;
+            font-weight: bold;
+            border: 1px dashed #ffcc00;
+            padding: 10px;
+            background-color: rgba(255, 204, 0, 0.1);
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            max-width: 900px;
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            background-color: var(--card-bg);
+            color: var(--locked-color);
+            border: 1px solid var(--locked-color);
+            padding: 12px 20px;
+            cursor: not-allowed;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn.unlocked {
+            color: var(--text-color);
+            border-color: var(--text-color);
+            cursor: pointer;
+        }
+
+        .tab-btn.active {
+            background-color: var(--accent-color);
+            color: #000;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.4);
+        }
+
+        .panel {
+            display: none;
+            background-color: var(--card-bg);
+            border: 1px solid #222;
+            padding: 30px;
+            max-width: 800px;
+            width: 100%;
+            box-sizing: border-box;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .panel.active {
+            display: block;
+        }
+
+        .quiz-section, .milestone-section {
+            margin-top: 20px;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+
+        .milestone-section {
+            background-color: rgba(0, 255, 102, 0.05);
+            border: 1px solid rgba(0, 255, 102, 0.2);
+            padding: 20px;
+            display: none;
+        }
+
+        .milestone-section.visible {
+            display: block;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            background-color: #000;
+            border: 1px solid #444;
+            color: var(--success-color);
+            padding: 12px;
+            font-family: inherit;
+            font-size: 16px;
+            margin-top: 10px;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        button.submit-btn, button.action-btn {
+            background-color: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--text-color);
+            padding: 10px 20px;
+            margin-top: 15px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: bold;
+        }
+
+        button.submit-btn:hover {
+            background-color: var(--text-color);
+            color: #000;
+        }
+
+        button.action-btn.complete {
+            background-color: var(--success-color);
+            color: #000;
+            border-color: var(--success-color);
+        }
+
+        .status-msg {
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .error { color: var(--accent-color); }
+        .success { color: var(--success-color); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>GOD MODE IQ TEST</h1>
+        <p class="warning">⚠️ ENTER AT YOUR OWN RISK: MIGHT MAKE YOU FEEL DUMB. CHOOSE COMPREHENSION OR CHOOSE IGNORANCE.</p>
+    </header>
+
+    <div class="tabs" id="tabsContainer">
+        <button class="tab-btn unlocked active" onclick="switchTab(1)" id="btn-tab1">PHASE 1: SENSORY</button>
+        <button class="tab-btn" onclick="switchTab(2)" id="btn-tab2">PHASE 2: VELOCITY</button>
+        <button class="tab-btn" onclick="switchTab(3)" id="btn-tab3">PHASE 3: COGNITIVE</button>
+        <button class="tab-btn" onclick="switchTab(4)" id="btn-tab4">PHASE 4: SPECTACLE</button>
+    </div>
+
+    <!-- PANEL 1 -->
+    <div class="panel active" id="panel1">
+        <h2>Phase 1: Auditory Gateway</h2>
+        <p><strong>Instructions:</strong> Listen to the initialization audio loop entirely. Decipher the pattern hidden within the white noise layer.</p>
+        
+        <div style="background:#000; padding:20px; text-align:center; border:1px solid #333; margin-bottom:20px;">
+            🎵 [ Audio Player: Placeholder For Training Track 01 ]
+        </div>
+
+        <div class="quiz-section">
+            <p><strong>Question:</strong> What exact word is whispered backwards at the 1-minute mark?</p>
+            <input type="text" id="ans1" placeholder="Type your answer here..." autocomplete="off">
+            <button class="submit-btn" onclick="checkAnswer(1)">VERIFY COMPREHENSION</button>
+            <div class="status-msg" id="msg1"></div>
+        </div>
+
+        <div class="milestone-section" id="mile1">
+            <h3>⚡ REAL WORLD OPERATION UNLOCKED: THE RITE OF THE ASH</h3>
+            <p>You must steal a close friend's sock. <strong>The Catch:</strong> You must actively wear the sock on your own foot while stealing it. Once secured, take it to a historic tombstone and burn it to ashes.</p>
+            <button class="action-btn" onclick="completeMilestone(1)" id="mileBtn1">MARK OPERATION COMPLETE</button>
+        </div>
+    </div>
+
+    <!-- PANEL 2 -->
+    <div class="panel" id="panel2">
+        <h2>Phase 2: Velocity & Chaos</h2>
+        <p><strong>Instructions:</strong> Track the double-time lyrical shifts. High temporal processing capacity is mandatory.</p>
+        
+        <div style="background:#000; padding:20px; text-align:center; border:1px solid #333; margin-bottom:20px;">
+            🎵 [ Audio Player: Placeholder For Training Track 02 ]
+        </div>
+
+        <div class="quiz-section">
+            <p><strong>Question:</strong> What is the syllable count of the third verse line spoken at maximum tempo?</p>
+            <input type="text" id="ans2" placeholder="Type your answer here..." autocomplete="off">
+            <button class="submit-btn" onclick="checkAnswer(2)">VERIFY COMPREHENSION</button>
+            <div class="status-msg" id="msg2"></div>
+        </div>
+
+        <div class="milestone-section" id="mile2">
+            <h3>⚡ REAL WORLD OPERATION UNLOCKED: GRAVITY MASTERY</h3>
+            <p>Acquire a standard commercial shopping cart. Pilot it down a public incline, achieving a verified top speed of <strong>20 mph</strong> via your device's GPS tracker.</p>
+            <button class="action-btn" onclick="completeMilestone(2)" id="mileBtn2">MARK OPERATION COMPLETE</button>
+        </div>
+    </div>
+
+    <!-- PANEL 3 -->
+    <div class="panel" id="panel3">
+        <h2>Phase 3: Cognitive Overwrite</h2>
+        <p><strong>Instructions:</strong> Defeat the linguistic reality virus. Do not let the overlapping channels split your attention.</p>
+        
+        <div style="background:#000; padding:20px; text-align:center; border:1px solid #333; margin-bottom:20px;">
+            🎵 [ Audio Player: Placeholder For Training Track 03 ]
+        </div>
+
+        <div class="quiz-section">
+            <p><strong>Question:</strong> What name does the secondary speaker claim to have before the signal distorts?</p>
+            <input type="text" id="ans3" placeholder="Type your answer here..." autocomplete="off">
+            <button class="submit-btn" onclick="checkAnswer(3)">VERIFY COMPREHENSION</button>
+            <div class="status-msg" id="msg3"></div>
+        </div>
+
+        <div class="milestone-section" id="mile3">
+            <h3>⚡ REAL WORLD OPERATION UNLOCKED: THE IDENTITY GLITCH</h3>
+            <p>Using pure psychological framing, successfully convince an acquaintance that their entire identity is a fabrication, they are living a lie, and they are actually someone else.</p>
+            <button class="action-btn" onclick="completeMilestone(3)" id="mileBtn3">MARK OPERATION COMPLETE</button>
+        </div>
+    </div>
+
+    <!-- PANEL 4 -->
+    <div class="panel" id="panel4">
+        <h2>Phase 4: Public Spectacle</h2>
+        <p><strong>Instructions:</strong> Complete processing of the ultimate frequency loop.</p>
+        
+        <div style="background:#000; padding:20px; text-align:center; border:1px solid #333; margin-bottom:20px;">
+            🎵 [ Audio Player: Placeholder For Training Track 04 ]
+        </div>
+
+        <div class="quiz-section">
+            <p><strong>Question:</strong> State the baseline geometric solution given in the final audio segment.</p>
+            <input type="text" id="ans4" placeholder="Type your answer here..." autocomplete="off">
+            <button class="submit-btn" onclick="checkAnswer(4)">VERIFY COMPREHENSION</button>
+            <div class="status-msg" id="msg4"></div>
+        </div>
+
+        <div class="milestone-section" id="mile4">
+            <h3>⚡ REAL WORLD OPERATION UNLOCKED: THE DARK KNIGHT PROTOCOL</h3>
