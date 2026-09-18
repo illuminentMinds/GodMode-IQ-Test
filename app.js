@@ -1,116 +1,67 @@
-// LEVELS OF INITIATION
-const LEVELS = ["BEGINNER", "DEMI-GOD", "GOD MODE"];
-let currentLevelIndex = 0;
-
-// Dynamic Questions to match the difficulty
-// Starts with serious real-world questions, ends with audio/cipher questions
-const QUESTIONS = {
-    "BEGINNER": {
-        1: "Query 01: What is the square root of 144?",
-        2: "Query 02: What is the capital city of Japan?",
-        3: "Query 03: How many planets are in our solar system?",
-        4: "Query 04: What element does 'O' represent on the periodic table?",
-        5: "Query 05: What is the boiling point of water in Celsius?",
-        6: "Query 06: How many continents are on Earth?"
-    },
-    "DEMI-GOD": {
-        1: "Query 01: Solve the Cipher (Shift 3): 'VHFUHW'",
-        2: "Query 02: Name the hermetic principle stating 'As above, so...'",
-        3: "Query 03: Enter the missing sequence: 1, 1, 2, 3, 5, 8, __?",
-        4: "Query 04: What architectural structure distributes weight outward in Gothic cathedrals?",
-        5: "Query 05: The Pineal gland is commonly referred to as the '____ Eye'.",
-        6: "Query 06: Who guards the threshold of the abyss in the Kabbalistic Tree of Life?"
-    },
-    "GOD MODE": {
-        1: "Query 01: [AUDIO LINK REQUIRED] What is the specific hidden frequency mentioned at 0:15?",
-        2: "Query 02: [AUDIO LINK REQUIRED] Transcribe the reversed phrase in the chorus.",
-        3: "Query 03: [AUDIO LINK REQUIRED] Enter the 4-digit numeric code embedded in the bassline.",
-        4: "Query 04: [AUDIO LINK REQUIRED] Calculate the exact duration of silence between the second and third tone.",
-        5: "Query 05: [AUDIO LINK REQUIRED] What is the whispered Latin phrase at 0:33?",
-        6: "Query 06: [AUDIO LINK REQUIRED] Enter the final terminal override code hidden in Track 6."
-    }
+// Each tab now has its own progression array. 
+// You can add as many questions as you want inside these brackets to make the gauntlet longer.
+const TAB_QUESTIONS = {
+    1: [
+        { rank: "BEGINNER", q: "What is 1 + 1?", a: "2" },
+        { rank: "BEGINNER", q: "What color is a banana?", a: "yellow" },
+        { rank: "DEMI-GOD", q: "What is the square root of 81?", a: "9" },
+        { rank: "GOD MODE", q: "[AUDIO REQUIRED] Type the first word spoken in the song.", a: "listen" }
+    ],
+    2: [
+        { rank: "BEGINNER", q: "What animal says meow?", a: "cat" },
+        { rank: "BEGINNER", q: "How many days are in a week?", a: "7" },
+        { rank: "DEMI-GOD", q: "Enter the missing sequence: 2, 4, 6, 8, __?", a: "10" },
+        { rank: "GOD MODE", q: "[AUDIO REQUIRED] What is the specific frequency mentioned at 0:15?", a: "omega" }
+    ],
+    3: [
+        { rank: "BEGINNER", q: "What is 10 minus 5?", a: "5" },
+        { rank: "BEGINNER", q: "Is water wet? (yes/no)", a: "yes" },
+        { rank: "DEMI-GOD", q: "What planet do we live on?", a: "earth" },
+        { rank: "GOD MODE", q: "[AUDIO REQUIRED] Enter the 4-digit numeric code embedded in the bassline.", a: "9364" }
+    ],
+    4: [
+        { rank: "BEGINNER", q: "What shape is a standard tire?", a: "circle" },
+        { rank: "BEGINNER", q: "How many legs does a spider have?", a: "8" },
+        { rank: "DEMI-GOD", q: "If you freeze water, it becomes...", a: "ice" },
+        { rank: "GOD MODE", q: "[AUDIO REQUIRED] Transcribe the reversed phrase in the chorus.", a: "awaken" }
+    ],
+    5: [
+        { rank: "BEGINNER", q: "What is the opposite of hot?", a: "cold" },
+        { rank: "BEGINNER", q: "How many fingers are on a typical human hand?", a: "5" },
+        { rank: "DEMI-GOD", q: "What is a baby dog called?", a: "puppy" },
+        { rank: "GOD MODE", q: "[AUDIO REQUIRED] Calculate the duration of silence between the second and third tone.", a: "3.14" }
+    ],
+    6: [
+        { rank: "BEGINNER", q: "What letter comes after A?", a: "b" },
+        { rank: "BEGINNER", q: "What is 100 + 0?", a: "100" },
+        { rank: "DEMI-GOD", q: "What do bees make?", a: "honey" },
+        { rank: "GOD MODE", q: "[AUDIO REQUIRED] Enter the final terminal override code hidden in Track 6.", a: "ascend" }
+    ]
 };
 
-// Exact Answers
-const DIFFICULTY_ANSWERS = {
-    "BEGINNER": {
-        1: "12",
-        2: "tokyo",
-        3: "8",
-        4: "oxygen",
-        5: "100",
-        6: "7"
-    },
-    "DEMI-GOD": {
-        1: "secret",
-        2: "below",
-        3: "13",
-        4: "flying buttress",
-        5: "third",
-        6: "daath"
-    },
-    "GOD MODE": {
-        1: "omega",
-        2: "awaken",
-        3: "9364",
-        4: "3.14",
-        5: "lux",
-        6: "ascend"
-    }
-};
-
+// Tracks which question index the user is currently on for each tab (Starts at 0 for all)
+let currentQuestionIndex = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
 let unlockedStages = [1]; 
 let completedMilestones = [];
 
 // Initialize game on load
 window.onload = () => {
-    updateUIDifficulty();
+    for(let i = 1; i <= 6; i++) {
+        loadQuestionData(i);
+    }
 };
 
-function getActiveAnswers() {
-    return DIFFICULTY_ANSWERS[LEVELS[currentLevelIndex]];
-}
-
-function getActiveQuestions() {
-    return QUESTIONS[LEVELS[currentLevelIndex]];
-}
-
-function updateUIDifficulty() {
-    const badge = document.getElementById("difficultyBadge");
-    badge.innerText = `RANK: ${LEVELS[currentLevelIndex]}`;
+function loadQuestionData(tabNumber) {
+    const qIndex = currentQuestionIndex[tabNumber];
+    const questionArray = TAB_QUESTIONS[tabNumber];
     
-    // Inject the correct questions into the HTML for this difficulty
-    const currentQuestions = getActiveQuestions();
-    for(let i = 1; i <= 6; i++) {
-        document.getElementById(`q-text-${i}`).innerText = currentQuestions[i];
+    // If they haven't finished all questions yet
+    if (qIndex < questionArray.length) {
+        const currentData = questionArray[qIndex];
+        document.getElementById(`rankBadge${tabNumber}`).innerText = `RANK: ${currentData.rank}`;
+        document.getElementById(`q-text-${tabNumber}`).innerText = currentData.q;
+        document.getElementById(`ans${tabNumber}`).value = ""; // Clear box
     }
-}
-
-function resetGameForNextDifficulty() {
-    unlockedStages = [1];
-    completedMilestones = [];
-    
-    // Clear all fields and visually loop back UI states
-    for(let i=1; i<=6; i++) {
-        document.getElementById(`ans${i}`).value = "";
-        document.getElementById(`msg${i}`).style.display = "none";
-        document.getElementById(`msg${i}`).innerText = "";
-        
-        const milestoneEl = document.getElementById(`mile${i}`);
-        milestoneEl.classList.remove('visible');
-        
-        const mBtn = document.getElementById(`mileBtn${i}`);
-        mBtn.classList.remove('complete');
-        mBtn.innerText = i === 6 ? "ASCEND STAGE" : "SUBMIT PROOF & COMPLETED MILESTONE";
-
-        const tabBtn = document.getElementById(`btn-tab${i}`);
-        if(i > 1) {
-            tabBtn.classList.remove('unlocked', 'active');
-        }
-    }
-    
-    updateUIDifficulty();
-    switchTab(1);
 }
 
 function switchTab(phaseNumber) {
@@ -126,21 +77,37 @@ function switchTab(phaseNumber) {
     document.getElementById(`panel${phaseNumber}`).classList.add('active');
 }
 
-function checkAnswer(phaseNumber) {
-    const inputVal = document.getElementById(`ans${phaseNumber}`).value.trim().toLowerCase();
-    const currentAnswerSet = getActiveAnswers();
-    const correctKey = currentAnswerSet[phaseNumber];
-    const msgEl = document.getElementById(`msg${phaseNumber}`);
-    const milestoneEl = document.getElementById(`mile${phaseNumber}`);
+function checkAnswer(tabNumber) {
+    const inputVal = document.getElementById(`ans${tabNumber}`).value.trim().toLowerCase();
+    const qIndex = currentQuestionIndex[tabNumber];
+    const questionArray = TAB_QUESTIONS[tabNumber];
+    const currentData = questionArray[qIndex];
+    const msgEl = document.getElementById(`msg${tabNumber}`);
 
-    if (inputVal === correctKey) {
+    if (inputVal === currentData.a) {
         msgEl.className = "status-msg success";
-        msgEl.innerText = "✓ ACCURACY DETECTED. REAL WORLD MILESTONE UNLOCKED.";
-        milestoneEl.classList.add('visible');
+        msgEl.innerText = "✓ ACCURACY DETECTED. PREPARING NEXT QUERY...";
+        
+        // Progress to next question
+        currentQuestionIndex[tabNumber]++;
+        
+        setTimeout(() => {
+            msgEl.style.display = "none";
+            if (currentQuestionIndex[tabNumber] < questionArray.length) {
+                // Load next question
+                loadQuestionData(tabNumber);
+            } else {
+                // Finished all questions for this tab! Show Milestone.
+                document.getElementById(`quizBox${tabNumber}`).style.display = "none";
+                const milestoneEl = document.getElementById(`mile${tabNumber}`);
+                milestoneEl.classList.add('visible');
+            }
+        }, 1200); // Wait a second so they see the success message
+
     } else {
         msgEl.className = "status-msg error";
+        msgEl.style.display = "block";
         msgEl.innerText = "❌ ZERO COMPREHENSION. SENSORY REJECTION DETECTED.";
-        milestoneEl.classList.remove('visible');
     }
 }
 
@@ -155,10 +122,9 @@ function completeMilestone(phaseNumber) {
     btn.classList.add('complete');
 
     const nextPhase = phaseNumber + 1;
-    const currentAnswerSet = getActiveAnswers();
 
-    if (currentAnswerSet[nextPhase]) {
-        // Unlock next tab inside the same difficulty tier
+    if (TAB_QUESTIONS[nextPhase]) {
+        // Unlock next tab 
         if (!unlockedStages.includes(nextPhase)) {
             unlockedStages.push(nextPhase);
             const nextTabBtn = document.getElementById(`btn-tab${nextPhase}`);
@@ -169,14 +135,8 @@ function completeMilestone(phaseNumber) {
             }, 600);
         }
     } else {
-        // Reached the final tab (Tab 6) of this difficulty level
-        if (currentLevelIndex < LEVELS.length - 1) {
-            currentLevelIndex++;
-            alert(`TRANSITIONING: Clearance upgraded to ${LEVELS[currentLevelIndex]}. The system resets.`);
-            resetGameForNextDifficulty();
-        } else {
-            alert("GOD MODE MAXIMA RECOGNIZED. INDEPENDENT REALITY ARCHITECT ASCENSION REACHED.");
-            document.body.style.backgroundImage = "radial-gradient(circle at center, #d4af37 0%, #000 100%)";
-        }
+        // Beaten the entire game
+        alert("GOD MODE MAXIMA RECOGNIZED. INDEPENDENT REALITY ARCHITECT ASCENSION REACHED.");
+        document.body.style.backgroundImage = "radial-gradient(circle at center, #d4af37 0%, #000 100%)";
     }
 }
