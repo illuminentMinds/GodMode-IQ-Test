@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>IlluminentMinds</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts for the serious secret society look -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Courier+Prime&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -13,7 +12,6 @@
     <header>
         <h1>IlluminentMinds</h1>
         <h2 class="sub-title-main">GOD MODE IQ TEST</h2>
-        <div id="difficultyBadge" class="difficulty-indicator">RANK: BEGINNER</div>
         <div class="subtitle">COMPLETE CONTROL OR MASTERY OF THE SENSES EQUAL IMMORTALITY</div>
     </header>
 
@@ -29,21 +27,24 @@
         <button class="tab-btn" onclick="switchTab(2)" id="btn-tab2">LIFE EXPANSION</button>
         <button class="tab-btn" onclick="switchTab(3)" id="btn-tab3">DICK EXPANSION</button>
         <button class="tab-btn" onclick="switchTab(4)" id="btn-tab4">STRENGTH EXPANSION</button>
-        <button class="tab-btn" onclick="switchTab(5)" id="btn-tab5">SECRET TO UNTAPPED WEALTH</button>
+        <button class="tab-btn" onclick="switchTab(5)" id="btn-tab5">SECRET WEALTH</button>
         <button class="tab-btn" onclick="switchTab(6)" id="btn-tab6">IMMORTALITY</button>
     </div>
 
     <div id="panels-container">
+        <!-- Panels are structured identically. JS handles the questions inside them. -->
+        
         <!-- TAB 1: IQ EXPANSION -->
         <div class="panel active" id="panel1">
             <h2>Quiz of Mastery: IQ Expansion</h2>
+            <div id="rankBadge1" class="difficulty-indicator">RANK: BEGINNER</div>
             <p class="panel-instructions"><strong>Initiation Directive:</strong> Must be able to understand this song all the way through.</p>
             <div class="audio-container">
                 <audio controls><source src="songs/iq_track.mp3" type="audio/mpeg"></audio>
             </div>
-            <div class="quiz-section">
+            <div class="quiz-section" id="quizBox1">
                 <p class="question-text" id="q-text-1">Loading query...</p>
-                <input type="text" id="ans1" placeholder="Enter sequence..." autocomplete="off">
+                <input type="text" id="ans1" placeholder="Enter answer here..." autocomplete="off">
                 <button class="submit-btn" onclick="checkAnswer(1)">VERIFY</button>
                 <div class="status-msg" id="msg1"></div>
             </div>
@@ -58,13 +59,14 @@
         <!-- TAB 2: LIFE EXPANSION -->
         <div class="panel" id="panel2">
             <h2>Quiz of Mastery: Life Expansion</h2>
+            <div id="rankBadge2" class="difficulty-indicator">RANK: BEGINNER</div>
             <p class="panel-instructions"><strong>Initiation Directive:</strong> Must be able to understand this song all the way through.</p>
             <div class="audio-container">
                 <audio controls><source src="songs/life_track.mp3" type="audio/mpeg"></audio>
             </div>
-            <div class="quiz-section">
+            <div class="quiz-section" id="quizBox2">
                 <p class="question-text" id="q-text-2">Loading query...</p>
-                <input type="text" id="ans2" placeholder="Enter sequence..." autocomplete="off">
+                <input type="text" id="ans2" placeholder="Enter answer here..." autocomplete="off">
                 <button class="submit-btn" onclick="checkAnswer(2)">VERIFY</button>
                 <div class="status-msg" id="msg2"></div>
             </div>
@@ -79,13 +81,14 @@
         <!-- TAB 3: DICK EXPANSION -->
         <div class="panel" id="panel3">
             <h2>Quiz of Mastery: Dick Expansion</h2>
+            <div id="rankBadge3" class="difficulty-indicator">RANK: BEGINNER</div>
             <p class="panel-instructions"><strong>Initiation Directive:</strong> Must be able to understand this song all the way through.</p>
             <div class="audio-container">
                 <audio controls><source src="songs/dick_track.mp3" type="audio/mpeg"></audio>
             </div>
-            <div class="quiz-section">
+            <div class="quiz-section" id="quizBox3">
                 <p class="question-text" id="q-text-3">Loading query...</p>
-                <input type="text" id="ans3" placeholder="Enter sequence..." autocomplete="off">
+                <input type="text" id="ans3" placeholder="Enter answer here..." autocomplete="off">
                 <button class="submit-btn" onclick="checkAnswer(3)">VERIFY</button>
                 <div class="status-msg" id="msg3"></div>
             </div>
@@ -100,13 +103,14 @@
         <!-- TAB 4: STRENGTH EXPANSION -->
         <div class="panel" id="panel4">
             <h2>Quiz of Mastery: Strength Expansion</h2>
+            <div id="rankBadge4" class="difficulty-indicator">RANK: BEGINNER</div>
             <p class="panel-instructions"><strong>Initiation Directive:</strong> Must be able to understand this song all the way through.</p>
             <div class="audio-container">
                 <audio controls><source src="songs/strength_track.mp3" type="audio/mpeg"></audio>
             </div>
-            <div class="quiz-section">
+            <div class="quiz-section" id="quizBox4">
                 <p class="question-text" id="q-text-4">Loading query...</p>
-                <input type="text" id="ans4" placeholder="Enter sequence..." autocomplete="off">
+                <input type="text" id="ans4" placeholder="Enter answer here..." autocomplete="off">
                 <button class="submit-btn" onclick="checkAnswer(4)">VERIFY</button>
                 <div class="status-msg" id="msg4"></div>
             </div>
@@ -124,13 +128,14 @@
         <!-- TAB 5: SECRET TO UNTAPPED WEALTH -->
         <div class="panel" id="panel5">
             <h2>Quiz of Mastery: Secret to Untapped Wealth</h2>
+            <div id="rankBadge5" class="difficulty-indicator">RANK: BEGINNER</div>
             <p class="panel-instructions"><strong>Initiation Directive:</strong> Must be able to understand this song all the way through.</p>
             <div class="audio-container">
                 <audio controls><source src="songs/wealth_track.mp3" type="audio/mpeg"></audio>
             </div>
-            <div class="quiz-section">
+            <div class="quiz-section" id="quizBox5">
                 <p class="question-text" id="q-text-5">Loading query...</p>
-                <input type="text" id="ans5" placeholder="Enter sequence..." autocomplete="off">
+                <input type="text" id="ans5" placeholder="Enter answer here..." autocomplete="off">
                 <button class="submit-btn" onclick="checkAnswer(5)">VERIFY</button>
                 <div class="status-msg" id="msg5"></div>
             </div>
@@ -145,13 +150,14 @@
         <!-- TAB 6: IMMORTALITY -->
         <div class="panel" id="panel6">
             <h2>Quiz of Mastery: Immortality</h2>
+            <div id="rankBadge6" class="difficulty-indicator">RANK: BEGINNER</div>
             <p class="panel-instructions"><strong>Initiation Directive:</strong> Must be able to understand this song all the way through.</p>
             <div class="audio-container">
                 <audio controls><source src="songs/immortality_track.mp3" type="audio/mpeg"></audio>
             </div>
-            <div class="quiz-section">
+            <div class="quiz-section" id="quizBox6">
                 <p class="question-text" id="q-text-6">Loading query...</p>
-                <input type="text" id="ans6" placeholder="Enter sequence..." autocomplete="off">
+                <input type="text" id="ans6" placeholder="Enter answer here..." autocomplete="off">
                 <button class="submit-btn" onclick="checkAnswer(6)">VERIFY</button>
                 <div class="status-msg" id="msg6"></div>
             </div>
