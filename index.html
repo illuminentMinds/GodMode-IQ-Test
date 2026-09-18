@@ -3,47 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE ARCHITECT INITIATION</title>
+    <title>IlluminentMinds</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts for that ancient/secret society look -->
+    <!-- Google Fonts for the serious secret society look -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Courier+Prime&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header>
-        <h1>THE ARCHITECT PROTOCOL</h1>
-        <div id="difficultyBadge" class="difficulty-indicator">RANK: INITIATE</div>
-        <div class="subtitle">MASTERY OF THE SENSES IS THE PRECURSOR TO ASCENSION</div>
+        <h1>IlluminentMinds</h1>
+        <h2 class="sub-title-main">GOD MODE IQ TEST</h2>
+        <div id="difficultyBadge" class="difficulty-indicator">RANK: BEGINNER</div>
+        <div class="subtitle">COMPLETE CONTROL OR MASTERY OF THE SENSES EQUAL IMMORTALITY</div>
     </header>
 
     <div class="warning-box">
-        ⚠ CLASSIFIED DIRECTIVE<br><br>
-        You have been granted temporary access to the calibration matrix. 
-        Most will fail to comprehend the frequencies embedded within these archives. 
-        If your consciousness rejects the audio stimuli, do not force it. 
-        Only those capable of absolute sensory isolation will achieve the final state.
+        ⚠️ ENTER AT YOUR OWN RISK (might make you feel dumb)<br><br>
+        You ever notice there's a select few people that come into your life that have some kind of superhuman ability? That can be you.<br><br>
+        If you don't understand this song the first time it's ok, this song trains you for god mode.
     </div>
 
     <!-- The 6 Expansion Tabs -->
     <div class="tabs" id="tabsContainer">
-        <button class="tab-btn unlocked active" onclick="switchTab(1)" id="btn-tab1">I. COGNITION</button>
-        <button class="tab-btn" onclick="switchTab(2)" id="btn-tab2">II. RESONANCE</button>
-        <button class="tab-btn" onclick="switchTab(3)" id="btn-tab3">III. PERCEPTION</button>
-        <button class="tab-btn" onclick="switchTab(4)" id="btn-tab4">IV. KINETICS</button>
-        <button class="tab-btn" onclick="switchTab(5)" id="btn-tab5">V. ALLOCATION</button>
-        <button class="tab-btn" onclick="switchTab(6)" id="btn-tab6">VI. TRANSCENDENCE</button>
+        <button class="tab-btn unlocked active" onclick="switchTab(1)" id="btn-tab1">IQ EXPANSION</button>
+        <button class="tab-btn" onclick="switchTab(2)" id="btn-tab2">LIFE EXPANSION</button>
+        <button class="tab-btn" onclick="switchTab(3)" id="btn-tab3">DICK EXPANSION</button>
+        <button class="tab-btn" onclick="switchTab(4)" id="btn-tab4">STRENGTH EXPANSION</button>
+        <button class="tab-btn" onclick="switchTab(5)" id="btn-tab5">SECRET TO UNTAPPED WEALTH</button>
+        <button class="tab-btn" onclick="switchTab(6)" id="btn-tab6">IMMORTALITY</button>
     </div>
 
-    <!-- Panels will be generated and updated by JavaScript to keep HTML clean -->
     <div id="panels-container">
-        <!-- Panel 1 -->
+        <!-- TAB 1: IQ EXPANSION -->
         <div class="panel active" id="panel1">
-            <h2>Phase I: Cognitive Calibration</h2>
-            <p class="panel-instructions"><strong>Initiation Directive:</strong> Process the acoustic baseline. Align your logical faculties before proceeding.</p>
+            <h2>Quiz of Mastery: IQ Expansion</h2>
+            <p class="panel-instructions"><strong>Initiation Directive:</strong> Must be able to understand this song all the way through.</p>
             <div class="audio-container">
-                <audio controls>
-                    <source src="songs/iq_track.mp3" type="audio/mpeg">
-                </audio>
+                <audio controls><source src="songs/iq_track.mp3" type="audio/mpeg"></audio>
             </div>
             <div class="quiz-section">
                 <p class="question-text" id="q-text-1">Loading query...</p>
@@ -52,17 +48,17 @@
                 <div class="status-msg" id="msg1"></div>
             </div>
             <div class="milestone-section" id="mile1">
-                <h3>☥ RITUAL OPERATION UNLOCKED</h3>
-                <p><strong>Operation: Sensory Deprivation</strong></p>
-                <p>Isolate yourself in absolute darkness and silence for exactly 15 minutes. Note the first geometric shape that manifests behind your closed eyelids. Do not proceed until complete.</p>
-                <button class="action-btn" onclick="completeMilestone(1)" id="mileBtn1">CONFIRM COMPLETION</button>
+                <h3>☥ REAL WORLD MILESTONE OPERATION UNLOCKED</h3>
+                <p><strong>Operation: The Rite of the Ash</strong></p>
+                <p>You must steal a close friend's sock. <strong>The Catch:</strong> You must be actively wearing the stolen sock on your own foot while you are stealing it. Once secured, take it to a historic tombstone and burn it to ashes.</p>
+                <button class="action-btn" onclick="completeMilestone(1)" id="mileBtn1">SUBMIT PROOF & COMPLETED MILESTONE</button>
             </div>
         </div>
 
-        <!-- Panel 2 -->
+        <!-- TAB 2: LIFE EXPANSION -->
         <div class="panel" id="panel2">
-            <h2>Phase II: Somatic Resonance</h2>
-            <p class="panel-instructions"><strong>Initiation Directive:</strong> Isolate harmonic deviations within the vocal processing profile.</p>
+            <h2>Quiz of Mastery: Life Expansion</h2>
+            <p class="panel-instructions"><strong>Initiation Directive:</strong> Must be able to understand this song all the way through.</p>
             <div class="audio-container">
                 <audio controls><source src="songs/life_track.mp3" type="audio/mpeg"></audio>
             </div>
@@ -73,19 +69,19 @@
                 <div class="status-msg" id="msg2"></div>
             </div>
             <div class="milestone-section" id="mile2">
-                <h3>☥ RITUAL OPERATION UNLOCKED</h3>
-                <p><strong>Operation: The Stillness</strong></p>
-                <p>Stand in a highly populated public square. Stare directly upward at the sky for 120 seconds without breaking posture, regardless of external stimuli or inquiries.</p>
-                <button class="action-btn" onclick="completeMilestone(2)" id="mileBtn2">CONFIRM COMPLETION</button>
+                <h3>☥ REAL WORLD MILESTONE OPERATION UNLOCKED</h3>
+                <p><strong>Operation: Velocity Mastery</strong></p>
+                <p>Acquire a standard commercial shopping cart. Take the shopping cart downhill while achieving a verified velocity of exactly <strong>20mph</strong> via GPS.</p>
+                <button class="action-btn" onclick="completeMilestone(2)" id="mileBtn2">SUBMIT PROOF & COMPLETED MILESTONE</button>
             </div>
         </div>
 
-        <!-- Panel 3 -->
+        <!-- TAB 3: DICK EXPANSION -->
         <div class="panel" id="panel3">
-            <h2>Phase III: Spatial Dominion</h2>
-            <p class="panel-instructions"><strong>Initiation Directive:</strong> Defend spatial stability matrices against intensive acoustic distractions.</p>
+            <h2>Quiz of Mastery: Dick Expansion</h2>
+            <p class="panel-instructions"><strong>Initiation Directive:</strong> Must be able to understand this song all the way through.</p>
             <div class="audio-container">
-                <audio controls><source src="songs/perception_track.mp3" type="audio/mpeg"></audio>
+                <audio controls><source src="songs/dick_track.mp3" type="audio/mpeg"></audio>
             </div>
             <div class="quiz-section">
                 <p class="question-text" id="q-text-3">Loading query...</p>
@@ -94,17 +90,17 @@
                 <div class="status-msg" id="msg3"></div>
             </div>
             <div class="milestone-section" id="mile3">
-                <h3>☥ RITUAL OPERATION UNLOCKED</h3>
-                <p><strong>Operation: Ego Dissolution</strong></p>
-                <p>Write your deepest fear on a physical piece of parchment. Burn it to ash, and rub the ashes directly into the palms of your hands.</p>
-                <button class="action-btn" onclick="completeMilestone(3)" id="mileBtn3">CONFIRM COMPLETION</button>
+                <h3>☥ REAL WORLD MILESTONE OPERATION UNLOCKED</h3>
+                <p><strong>Operation: The Identity Glitch</strong></p>
+                <p>Convince someone they aren't who they are, that they are living a lie, and that they are really somebody else entirely.</p>
+                <button class="action-btn" onclick="completeMilestone(3)" id="mileBtn3">SUBMIT PROOF & COMPLETED MILESTONE</button>
             </div>
         </div>
 
-        <!-- Panel 4 -->
+        <!-- TAB 4: STRENGTH EXPANSION -->
         <div class="panel" id="panel4">
-            <h2>Phase IV: Kinetic Output</h2>
-            <p class="panel-instructions"><strong>Initiation Directive:</strong> Neutralize neuro-linguistic filtering frameworks embedded within the sound structure.</p>
+            <h2>Quiz of Mastery: Strength Expansion</h2>
+            <p class="panel-instructions"><strong>Initiation Directive:</strong> Must be able to understand this song all the way through.</p>
             <div class="audio-container">
                 <audio controls><source src="songs/strength_track.mp3" type="audio/mpeg"></audio>
             </div>
@@ -115,17 +111,20 @@
                 <div class="status-msg" id="msg4"></div>
             </div>
             <div class="milestone-section" id="mile4">
-                <h3>☥ RITUAL OPERATION UNLOCKED</h3>
-                <p><strong>Operation: The Fast</strong></p>
-                <p>Fasting protocol. Consume absolutely nothing but purified water for 24 hours to clarify the sensory matrix and detach from biological reliance.</p>
-                <button class="action-btn" onclick="completeMilestone(4)" id="mileBtn4">CONFIRM COMPLETION</button>
+                <h3>☥ REAL WORLD MILESTONE OPERATION UNLOCKED</h3>
+                <p><strong>Operation: The Dark Knight Protocol</strong></p>
+                <p>Dress up like Batman and walk straight to City Hall. You must hold a sign that reads:</p>
+                <div class="script-quote">"I didn't do it"</div>
+                <p>When someone asks you a question about it, say nothing at all. Just look at them slowly, and say exactly:</p>
+                <div class="script-quote">"I am the knight"</div>
+                <button class="action-btn" onclick="completeMilestone(4)" id="mileBtn4">SUBMIT PROOF & COMPLETED MILESTONE</button>
             </div>
         </div>
 
-        <!-- Panel 5 -->
+        <!-- TAB 5: SECRET TO UNTAPPED WEALTH -->
         <div class="panel" id="panel5">
-            <h2>Phase V: Resource Allocation</h2>
-            <p class="panel-instructions"><strong>Initiation Directive:</strong> Break foundational conscious assumptions to open systemic economic expansion.</p>
+            <h2>Quiz of Mastery: Secret to Untapped Wealth</h2>
+            <p class="panel-instructions"><strong>Initiation Directive:</strong> Must be able to understand this song all the way through.</p>
             <div class="audio-container">
                 <audio controls><source src="songs/wealth_track.mp3" type="audio/mpeg"></audio>
             </div>
@@ -136,17 +135,17 @@
                 <div class="status-msg" id="msg5"></div>
             </div>
             <div class="milestone-section" id="mile5">
-                <h3>☥ RITUAL OPERATION UNLOCKED</h3>
-                <p><strong>Operation: Capital Detachment</strong></p>
-                <p>Withdraw a significant sum of physical currency. Leave it in a public, concealed location for a stranger to find. Do not observe who takes it.</p>
-                <button class="action-btn" onclick="completeMilestone(5)" id="mileBtn5">CONFIRM COMPLETION</button>
+                <h3>☥ REAL WORLD MILESTONE OPERATION UNLOCKED</h3>
+                <p><strong>Operation: Capital Reclamation</strong></p>
+                <p>Find a penny on the street face up, look into the sky, laugh maniacally for 10 straight seconds, and keep the coin inside your shoe.</p>
+                <button class="action-btn" onclick="completeMilestone(5)" id="mileBtn5">SUBMIT PROOF & COMPLETED MILESTONE</button>
             </div>
         </div>
 
-        <!-- Panel 6 -->
+        <!-- TAB 6: IMMORTALITY -->
         <div class="panel" id="panel6">
-            <h2>Phase VI: Transcendent State</h2>
-            <p class="panel-instructions"><strong>Initiation Directive:</strong> Terminal loop processing checkpoint. Decipher complex layered metrics under severe sonic mutation.</p>
+            <h2>Quiz of Mastery: Immortality</h2>
+            <p class="panel-instructions"><strong>Initiation Directive:</strong> Must be able to understand this song all the way through.</p>
             <div class="audio-container">
                 <audio controls><source src="songs/immortality_track.mp3" type="audio/mpeg"></audio>
             </div>
@@ -157,15 +156,14 @@
                 <div class="status-msg" id="msg6"></div>
             </div>
             <div class="milestone-section" id="mile6">
-                <h3>☥ RITUAL OPERATION UNLOCKED</h3>
-                <p><strong>Operation: The Mirror</strong></p>
-                <p>Stare into a mirror in extreme low-light conditions until your facial features become unrecognizable to your own brain. Whisper your true name.</p>
+                <h3>☥ REAL WORLD MILESTONE OPERATION UNLOCKED</h3>
+                <p><strong>Operation: The Final Loop</strong></p>
+                <p>Stare into a mirror in extreme low-light conditions until your facial features become completely unrecognizable to your own brain. Then, whisper your true name.</p>
                 <button class="action-btn" onclick="completeMilestone(6)" id="mileBtn6">ASCEND STAGE</button>
             </div>
         </div>
     </div>
 
-    <!-- Ensure logic initializes on load -->
     <script src="app.js"></script>
 </body>
 </html>
