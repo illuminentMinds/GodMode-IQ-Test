@@ -1,18 +1,19 @@
 // LEVELS OF INITIATION
-const LEVELS = ["INITIATE", "ADEPT", "ILLUMINATED"];
+const LEVELS = ["BEGINNER", "DEMI-GOD", "GOD MODE"];
 let currentLevelIndex = 0;
 
 // Dynamic Questions to match the difficulty
+// Starts with serious real-world questions, ends with audio/cipher questions
 const QUESTIONS = {
-    "INITIATE": {
-        1: "Query 01: Enter the first 4 digits of the Golden Ratio (Phi).",
-        2: "Query 02: At what numerical temperature do Celsius and Fahrenheit intersect?",
-        3: "Query 03: What is the atomic number of the element that forms the basis of all known biological life?",
-        4: "Query 04: If you face True North, what is the exact azimuth degree of True East?",
-        5: "Query 05: What is the most abundant atmospheric gas on Earth?",
-        6: "Query 06: How many faces exist on a standard Icosahedron?"
+    "BEGINNER": {
+        1: "Query 01: What is the square root of 144?",
+        2: "Query 02: What is the capital city of Japan?",
+        3: "Query 03: How many planets are in our solar system?",
+        4: "Query 04: What element does 'O' represent on the periodic table?",
+        5: "Query 05: What is the boiling point of water in Celsius?",
+        6: "Query 06: How many continents are on Earth?"
     },
-    "ADEPT": {
+    "DEMI-GOD": {
         1: "Query 01: Solve the Cipher (Shift 3): 'VHFUHW'",
         2: "Query 02: Name the hermetic principle stating 'As above, so...'",
         3: "Query 03: Enter the missing sequence: 1, 1, 2, 3, 5, 8, __?",
@@ -20,27 +21,27 @@ const QUESTIONS = {
         5: "Query 05: The Pineal gland is commonly referred to as the '____ Eye'.",
         6: "Query 06: Who guards the threshold of the abyss in the Kabbalistic Tree of Life?"
     },
-    "ILLUMINATED": {
-        1: "Query 01: [AUDIO LINK] Reverse the audio frequency peak mentioned in Track 1.",
-        2: "Query 02: [AUDIO LINK] What is the hidden binaural beat frequency targeting the pineal gland in Track 2?",
-        3: "Query 03: [AUDIO LINK] Transcribe the whispered Latin phrase at 0:33 in Track 3.",
-        4: "Query 04: [AUDIO LINK] Calculate the exact duration of silence between the second and third tone (Track 4).",
-        5: "Query 05: [AUDIO LINK] Identify the 4-digit prime number sequence embedded in the bassline (Track 5).",
-        6: "Query 06: [AUDIO LINK] Enter the final terminal override code hidden in Track 6."
+    "GOD MODE": {
+        1: "Query 01: [AUDIO LINK REQUIRED] What is the specific hidden frequency mentioned at 0:15?",
+        2: "Query 02: [AUDIO LINK REQUIRED] Transcribe the reversed phrase in the chorus.",
+        3: "Query 03: [AUDIO LINK REQUIRED] Enter the 4-digit numeric code embedded in the bassline.",
+        4: "Query 04: [AUDIO LINK REQUIRED] Calculate the exact duration of silence between the second and third tone.",
+        5: "Query 05: [AUDIO LINK REQUIRED] What is the whispered Latin phrase at 0:33?",
+        6: "Query 06: [AUDIO LINK REQUIRED] Enter the final terminal override code hidden in Track 6."
     }
 };
 
 // Exact Answers
 const DIFFICULTY_ANSWERS = {
-    "INITIATE": {
-        1: "1.618",
-        2: "-40",
-        3: "6",
-        4: "90",
-        5: "nitrogen",
-        6: "20"
+    "BEGINNER": {
+        1: "12",
+        2: "tokyo",
+        3: "8",
+        4: "oxygen",
+        5: "100",
+        6: "7"
     },
-    "ADEPT": {
+    "DEMI-GOD": {
         1: "secret",
         2: "below",
         3: "13",
@@ -48,13 +49,13 @@ const DIFFICULTY_ANSWERS = {
         5: "third",
         6: "daath"
     },
-    "ILLUMINATED": {
+    "GOD MODE": {
         1: "omega",
-        2: "936hz",
-        3: "lux in tenebris",
+        2: "awaken",
+        3: "9364",
         4: "3.14",
-        5: "2357",
-        6: "apotheosis"
+        5: "lux",
+        6: "ascend"
     }
 };
 
@@ -100,7 +101,7 @@ function resetGameForNextDifficulty() {
         
         const mBtn = document.getElementById(`mileBtn${i}`);
         mBtn.classList.remove('complete');
-        mBtn.innerText = i === 6 ? "ASCEND STAGE" : "CONFIRM COMPLETION";
+        mBtn.innerText = i === 6 ? "ASCEND STAGE" : "SUBMIT PROOF & COMPLETED MILESTONE";
 
         const tabBtn = document.getElementById(`btn-tab${i}`);
         if(i > 1) {
@@ -114,7 +115,7 @@ function resetGameForNextDifficulty() {
 
 function switchTab(phaseNumber) {
     if (!unlockedStages.includes(phaseNumber)) {
-        alert("ACCESS DENIED: Complete preceding protocols before advancing.");
+        alert("ACCESS DENIED: Complete preceding tests and real-world milestones first.");
         return;
     }
 
@@ -134,11 +135,11 @@ function checkAnswer(phaseNumber) {
 
     if (inputVal === correctKey) {
         msgEl.className = "status-msg success";
-        msgEl.innerText = "ACCESS GRANTED. NEURAL LINK ESTABLISHED.";
+        msgEl.innerText = "✓ ACCURACY DETECTED. REAL WORLD MILESTONE UNLOCKED.";
         milestoneEl.classList.add('visible');
     } else {
         msgEl.className = "status-msg error";
-        msgEl.innerText = "INCORRECT INPUT. SENSORY REJECTION DETECTED.";
+        msgEl.innerText = "❌ ZERO COMPREHENSION. SENSORY REJECTION DETECTED.";
         milestoneEl.classList.remove('visible');
     }
 }
@@ -150,7 +151,7 @@ function completeMilestone(phaseNumber) {
         completedMilestones.push(phaseNumber);
     }
     
-    btn.innerText = "OPERATION VERIFIED ✓";
+    btn.innerText = "MILESTONE OPERATION VERIFIED ✓";
     btn.classList.add('complete');
 
     const nextPhase = phaseNumber + 1;
@@ -171,10 +172,10 @@ function completeMilestone(phaseNumber) {
         // Reached the final tab (Tab 6) of this difficulty level
         if (currentLevelIndex < LEVELS.length - 1) {
             currentLevelIndex++;
-            alert(`SYSTEM OVERRIDE: Clearance upgraded to ${LEVELS[currentLevelIndex]}. The matrix resets.`);
+            alert(`TRANSITIONING: Clearance upgraded to ${LEVELS[currentLevelIndex]}. The system resets.`);
             resetGameForNextDifficulty();
         } else {
-            alert("TRANSCENDENCE ACHIEVED. WELCOME TO THE ARCHITECT PROTOCOL.");
+            alert("GOD MODE MAXIMA RECOGNIZED. INDEPENDENT REALITY ARCHITECT ASCENSION REACHED.");
             document.body.style.backgroundImage = "radial-gradient(circle at center, #d4af37 0%, #000 100%)";
         }
     }
