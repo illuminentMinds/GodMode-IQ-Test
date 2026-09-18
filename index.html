@@ -4,211 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GOD MODE IQ TEST</title>
-    <style>
-        :root {
-            --bg-color: #050505;
-            --card-bg: #111;
-            --accent-color: #ff0055;
-            --text-color: #e0e0e0;
-            --locked-color: #333;
-            --success-color: #00ff66;
-        }
-
-        body {
-            font-family: 'Courier New', Courier, monospace;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 20px;
-            max-width: 800px;
-        }
-
-        h1 {
-            color: var(--accent-color);
-            letter-spacing: 4px;
-            text-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
-            margin-bottom: 5px;
-        }
-
-        .difficulty-badge {
-            background-color: #ffcc00;
-            color: #000;
-            padding: 5px 15px;
-            font-weight: bold;
-            font-size: 16px;
-            letter-spacing: 2px;
-            margin-top: 10px;
-            display: inline-block;
-            text-transform: uppercase;
-        }
-
-        .warning-box {
-            color: #ffcc00;
-            font-weight: bold;
-            border: 1px dashed #ffcc00;
-            padding: 15px;
-            background-color: rgba(255, 204, 0, 0.05);
-            margin: 20px 0;
-            max-width: 800px;
-            line-height: 1.6;
-        }
-
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            max-width: 1000px;
-            width: 100%;
-            overflow-x: auto;
-            padding-bottom: 5px;
-        }
-
-        .tab-btn {
-            background-color: var(--card-bg);
-            color: var(--locked-color);
-            border: 1px solid var(--locked-color);
-            padding: 12px 15px;
-            cursor: not-allowed;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            letter-spacing: 1px;
-            font-size: 12px;
-        }
-
-        .tab-btn.unlocked {
-            color: var(--text-color);
-            border-color: #555;
-            cursor: pointer;
-        }
-
-        .tab-btn.active {
-            background-color: var(--accent-color);
-            color: #000;
-            border-color: var(--accent-color);
-            box-shadow: 0 0 15px rgba(255, 0, 85, 0.4);
-        }
-
-        .panel {
-            display: none;
-            background-color: var(--card-bg);
-            border: 1px solid #222;
-            padding: 30px;
-            max-width: 800px;
-            width: 100%;
-            box-sizing: border-box;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .panel.active {
-            display: block;
-        }
-
-        audio {
-            width: 100%;
-            margin: 15px 0;
-            filter: invert(1);
-        }
-
-        .quiz-section, .milestone-section {
-            margin-top: 25px;
-            border-top: 1px solid #222;
-            padding-top: 20px;
-        }
-
-        .milestone-section {
-            background-color: rgba(0, 255, 102, 0.02);
-            border: 1px solid rgba(0, 255, 102, 0.15);
-            padding: 20px;
-            display: none;
-        }
-
-        .milestone-section.visible {
-            display: block;
-        }
-
-        .script-quote {
-            background: #000;
-            border-left: 3px solid var(--accent-color);
-            padding: 10px 15px;
-            margin: 15px 0;
-            font-style: italic;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            background-color: #000;
-            border: 1px solid #333;
-            color: var(--success-color);
-            padding: 12px;
-            font-family: inherit;
-            font-size: 16px;
-            margin-top: 10px;
-            box-sizing: border-box;
-        }
-
-        input[type="text"]:focus {
-            outline: none;
-            border-color: var(--accent-color);
-        }
-
-        button.submit-btn, button.action-btn {
-            background-color: transparent;
-            color: var(--text-color);
-            border: 1px solid var(--text-color);
-            padding: 10px 20px;
-            margin-top: 15px;
-            cursor: pointer;
-            font-family: inherit;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        button.submit-btn:hover {
-            background-color: var(--text-color);
-            color: #000;
-        }
-
-        button.action-btn.complete {
-            background-color: var(--success-color);
-            color: #000;
-            border-color: var(--success-color);
-            cursor: default;
-        }
-
-        .status-msg {
-            margin-top: 12px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .error { color: var(--accent-color); }
-        .success { color: var(--success-color); }
-    </style>
+    <!-- Links to your external CSS stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
         <h1>GOD MODE IQ TEST</h1>
-        <div id="difficultyDisplay" class="difficulty-badge">CURRENT DIFFICULTY: EASY</div>
+        <div id="difficultyBadge" class="difficulty-indicator">DIFFICULTY: NOOB</div>
+        <div class="subtitle">COMPLETE CONTROL OR MASTERY OF THE SENSES EQUAL IMMORTALITY</div>
     </header>
 
     <div class="warning-box">
         ⚠️ ENTER AT YOUR OWN RISK (might make you feel dumb)<br><br>
         If you don't understand this song the first time it's ok, this song trains you for god mode. 
         You ever notice there's a select few people that come in your life that have some kind of superhuman ability? 
-        That can be you. Complete control or mastery of the senses equal immortality.
+        That can be you.
     </div>
 
-    <!-- 6 Total Tabs Configured According to Instructions -->
+    <!-- The 6 Expansion Tabs -->
     <div class="tabs" id="tabsContainer">
         <button class="tab-btn unlocked active" onclick="switchTab(1)" id="btn-tab1">IQ EXPANSION</button>
         <button class="tab-btn" onclick="switchTab(2)" id="btn-tab2">LIFE EXPANSION</button>
@@ -218,17 +32,20 @@
         <button class="tab-btn" onclick="switchTab(6)" id="btn-tab6">IMMORTALITY</button>
     </div>
 
-    <!-- TAB 1 -->
+    <!-- TAB 1: IQ EXPANSION -->
     <div class="panel active" id="panel1">
         <h2>Quiz of Mastery: IQ Expansion</h2>
         <p><strong>Initiation:</strong> You must be able to understand this song all the way through.</p>
         
-        <audio controls id="audio1">
-            <source src="audio/song1.mp3" type="audio/mpeg">
-        </audio>
+        <div class="audio-container">
+            <audio controls>
+                <source src="songs/iq_track.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
 
         <div class="quiz-section">
-            <p id="qText1"><strong>Written Verification Question:</strong> What is 2 + 2?</p>
+            <p><strong>Written Verification Question:</strong> What do you call a fake noodle?</p>
             <input type="text" id="ans1" placeholder="Provide answer here..." autocomplete="off">
             <button class="submit-btn" onclick="checkAnswer(1)">VERIFY ACCURACY</button>
             <div class="status-msg" id="msg1"></div>
@@ -242,17 +59,20 @@
         </div>
     </div>
 
-    <!-- TAB 2 -->
+    <!-- TAB 2: LIFE EXPANSION -->
     <div class="panel" id="panel2">
         <h2>Quiz of Mastery: Life Expansion</h2>
-        <p><strong>Initiation:</strong> Listen completely to progress past current cellular blocks.</p>
+        <p><strong>Initiation:</strong> Listen to the frequency loop and override your mental processing speeds.</p>
         
-        <audio controls id="audio2">
-            <source src="audio/song2.mp3" type="audio/mpeg">
-        </audio>
+        <div class="audio-container">
+            <audio controls>
+                <source src="songs/life_track.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
 
         <div class="quiz-section">
-            <p id="qText2"><strong>Written Verification Question:</strong> What color is a fire truck?</p>
+            <p><strong>Written Verification Question:</strong> Why did the strawberry cry?</p>
             <input type="text" id="ans2" placeholder="Provide answer here..." autocomplete="off">
             <button class="submit-btn" onclick="checkAnswer(2)">VERIFY ACCURACY</button>
             <div class="status-msg" id="msg2"></div>
@@ -266,17 +86,20 @@
         </div>
     </div>
 
-    <!-- TAB 3 -->
+    <!-- TAB 3: DICK EXPANSION -->
     <div class="panel" id="panel3">
         <h2>Quiz of Mastery: Dick Expansion</h2>
-        <p><strong>Initiation:</strong> Absolute sensory focus required.</p>
+        <p><strong>Initiation:</strong> Master focus parameters against psychological soundscapes.</p>
         
-        <audio controls id="audio3">
-            <source src="audio/song3.mp3" type="audio/mpeg">
-        </audio>
+        <div class="audio-container">
+            <audio controls>
+                <source src="songs/dick_track.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
 
         <div class="quiz-section">
-            <p id="qText3"><strong>Written Verification Question:</strong> What is the opposite of up?</p>
+            <p><strong>Written Verification Question:</strong> What fast food chain has the Golden Arches?</p>
             <input type="text" id="ans3" placeholder="Provide answer here..." autocomplete="off">
             <button class="submit-btn" onclick="checkAnswer(3)">VERIFY ACCURACY</button>
             <div class="status-msg" id="msg3"></div>
@@ -285,3 +108,88 @@
         <div class="milestone-section" id="mile3">
             <h3>⚡ REAL WORLD MILESTONE OPERATION UNLOCKED</h3>
             <p><strong>Operation: The Identity Glitch</strong></p>
+            <p>Convince someone they aren't who they are, that they are living a lie, and that they are really somebody else entirely.</p>
+            <button class="action-btn" onclick="completeMilestone(3)" id="mileBtn3">SUBMIT PROOF & COMPLETED MILESTONE</button>
+        </div>
+    </div>
+
+    <!-- TAB 4: STRENGTH EXPANSION -->
+    <div class="panel" id="panel4">
+        <h2>Quiz of Mastery: Strength Expansion</h2>
+        <p><strong>Initiation:</strong> Run the neurological override system sequence.</p>
+        
+        <div class="audio-container">
+            <audio controls>
+                <source src="songs/strength_track.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <div class="quiz-section">
+            <p><strong>Written Verification Question:</strong> What color is a standard bright yellow lemon?</p>
+            <input type="text" id="ans4" placeholder="Provide answer here..." autocomplete="off">
+            <button class="submit-btn" onclick="checkAnswer(4)">VERIFY ACCURACY</button>
+            <div class="status-msg" id="msg4"></div>
+        </div>
+
+        <div class="milestone-section" id="mile4">
+            <h3>⚡ REAL WORLD MILESTONE OPERATION UNLOCKED</h3>
+            <p><strong>Operation: The Dark Knight Protocol</strong></p>
+            <p>Dress up like Batman and walk straight to City Hall. You must hold a sign that reads:</p>
+            <div class="script-quote">"I didn't do it"</div>
+            <p>When someone asks you a question about it, say absolutely nothing at all at first. Just look at them slowly, and say exactly:</p>
+            <div class="script-quote">"I am the knight"</div>
+            <button class="action-btn" onclick="completeMilestone(4)" id="mileBtn4">SUBMIT PROOF & COMPLETED MILESTONE</button>
+        </div>
+    </div>
+
+    <!-- TAB 5: SECRET TO UNTAPPED WEALTH -->
+    <div class="panel" id="panel5">
+        <h2>Quiz of Mastery: Secret to Untapped Wealth</h2>
+        <p><strong>Initiation:</strong> Break the programming constraints keeping you poor.</p>
+        
+        <div class="audio-container">
+            <audio controls>
+                <source src="songs/wealth_track.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <div class="quiz-section">
+            <p><strong>Written Verification Question:</strong> What animal says 'meow'?</p>
+            <input type="text" id="ans5" placeholder="Provide answer here..." autocomplete="off">
+            <button class="submit-btn" onclick="checkAnswer(5)">VERIFY ACCURACY</button>
+            <div class="status-msg" id="msg5"></div>
+        </div>
+
+        <div class="milestone-section" id="mile5">
+            <h3>⚡ REAL WORLD MILESTONE OPERATION UNLOCKED</h3>
+            <p><strong>Operation: Capital Reclamation</strong></p>
+            <p>Find a penny on the street face up, look into the sky, laugh maniacally for 10 straight seconds, and keep the coin inside your shoe.</p>
+            <button class="action-btn" onclick="completeMilestone(5)" id="mileBtn5">SUBMIT PROOF & COMPLETED MILESTONE</button>
+        </div>
+    </div>
+
+    <!-- TAB 6: IMMORTALITY -->
+    <div class="panel" id="panel6">
+        <h2>Quiz of Mastery: Immortality</h2>
+        <p><strong>Initiation:</strong> The ultimate gateway loop. Complete sensory dominance is mandatory to survive eternity.</p>
+        
+        <div class="audio-container">
+            <audio controls>
+                <source src="songs/immortality_track.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <div class="quiz-section">
+            <p><strong>Written Verification Question:</strong> How many wheels are on a standard bicycle?</p>
+            <input type="text" id="ans6" placeholder="Provide answer here..." autocomplete="off">
+            <button class="submit-btn" onclick="checkAnswer(6)">VERIFY ACCURACY</button>
+            <div class="status-msg" id="msg6"></div>
+        </div>
+
+        <div class="milestone-section" id="mile6">
+            <h3>⚡ FINAL REAL WORLD MILESTONE OPERATION UNLOCKED</h3>
+            <p><strong>Operation: Reality Ascension</strong></p>
+            <p>Find a complete stranger, look directly into their eyes, and state perfectly: "The loops have reset." Do not offer context or look back.</p>
