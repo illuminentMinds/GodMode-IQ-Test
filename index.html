@@ -10,7 +10,7 @@
             --card-bg: #111;
             --accent-color: #ff0055;
             --text-color: #e0e0e0;
-            --locked-color: #444;
+            --locked-color: #333;
             --success-color: #00ff66;
         }
 
@@ -27,7 +27,7 @@
 
         header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             max-width: 800px;
         }
 
@@ -38,11 +38,16 @@
             margin-bottom: 5px;
         }
 
-        .subtitle {
-            font-size: 14px;
-            color: #888;
-            margin-top: 0;
+        .difficulty-badge {
+            background-color: #ffcc00;
+            color: #000;
+            padding: 5px 15px;
+            font-weight: bold;
+            font-size: 16px;
             letter-spacing: 2px;
+            margin-top: 10px;
+            display: inline-block;
+            text-transform: uppercase;
         }
 
         .warning-box {
@@ -51,8 +56,8 @@
             border: 1px dashed #ffcc00;
             padding: 15px;
             background-color: rgba(255, 204, 0, 0.05);
-            margin-bottom: 25px;
-            text-align: left;
+            margin: 20px 0;
+            max-width: 800px;
             line-height: 1.6;
         }
 
@@ -60,26 +65,28 @@
             display: flex;
             gap: 10px;
             margin-bottom: 20px;
-            max-width: 900px;
+            max-width: 1000px;
             width: 100%;
             overflow-x: auto;
+            padding-bottom: 5px;
         }
 
         .tab-btn {
             background-color: var(--card-bg);
             color: var(--locked-color);
             border: 1px solid var(--locked-color);
-            padding: 12px 20px;
+            padding: 12px 15px;
             cursor: not-allowed;
             font-weight: bold;
             transition: all 0.3s ease;
             white-space: nowrap;
             letter-spacing: 1px;
+            font-size: 12px;
         }
 
         .tab-btn.unlocked {
             color: var(--text-color);
-            border-color: var(--text-color);
+            border-color: #555;
             cursor: pointer;
         }
 
@@ -105,6 +112,12 @@
             display: block;
         }
 
+        audio {
+            width: 100%;
+            margin: 15px 0;
+            filter: invert(1);
+        }
+
         .quiz-section, .milestone-section {
             margin-top: 25px;
             border-top: 1px solid #222;
@@ -112,7 +125,7 @@
         }
 
         .milestone-section {
-            background-color: rgba(0, 255, 102, 0.03);
+            background-color: rgba(0, 255, 102, 0.02);
             border: 1px solid rgba(0, 255, 102, 0.15);
             padding: 20px;
             display: none;
@@ -185,35 +198,37 @@
 
     <header>
         <h1>GOD MODE IQ TEST</h1>
-        <div class="subtitle">COMPLETE CONTROL OR MASTERY OF THE SENSES EQUAL IMMORTALITY</div>
+        <div id="difficultyDisplay" class="difficulty-badge">CURRENT DIFFICULTY: EASY</div>
     </header>
 
     <div class="warning-box">
         ⚠️ ENTER AT YOUR OWN RISK (might make you feel dumb)<br><br>
         If you don't understand this song the first time it's ok, this song trains you for god mode. 
         You ever notice there's a select few people that come in your life that have some kind of superhuman ability? 
-        That can be you.
+        That can be you. Complete control or mastery of the senses equal immortality.
     </div>
 
-    <!-- Tab Navigation Panel (Strictly matching your requested names) -->
+    <!-- 6 Total Tabs Configured According to Instructions -->
     <div class="tabs" id="tabsContainer">
         <button class="tab-btn unlocked active" onclick="switchTab(1)" id="btn-tab1">IQ EXPANSION</button>
         <button class="tab-btn" onclick="switchTab(2)" id="btn-tab2">LIFE EXPANSION</button>
         <button class="tab-btn" onclick="switchTab(3)" id="btn-tab3">DICK EXPANSION</button>
         <button class="tab-btn" onclick="switchTab(4)" id="btn-tab4">STRENGTH EXPANSION</button>
+        <button class="tab-btn" onclick="switchTab(5)" id="btn-tab5">SECRET TO UNTAPPED WEALTH</button>
+        <button class="tab-btn" onclick="switchTab(6)" id="btn-tab6">IMMORTALITY</button>
     </div>
 
-    <!-- TAB 1: IQ EXPANSION -->
+    <!-- TAB 1 -->
     <div class="panel active" id="panel1">
         <h2>Quiz of Mastery: IQ Expansion</h2>
-        <p><strong>Initiation:</strong> You must be able to understand this song all the way through. Listen carefully to discover the sequence key.</p>
+        <p><strong>Initiation:</strong> You must be able to understand this song all the way through.</p>
         
-        <div style="background:#000; padding:20px; text-align:center; border:1px solid #222; margin-bottom:20px;">
-            🎵 [ Audio Integration Area: Place Track 01 Link or Embed Here ]
-        </div>
+        <audio controls id="audio1">
+            <source src="audio/song1.mp3" type="audio/mpeg">
+        </audio>
 
         <div class="quiz-section">
-            <p><strong>Written Verification Question:</strong> What core terminal concept or message is revealed in the center frame of the song sequence?</p>
+            <p id="qText1"><strong>Written Verification Question:</strong> What is 2 + 2?</p>
             <input type="text" id="ans1" placeholder="Provide answer here..." autocomplete="off">
             <button class="submit-btn" onclick="checkAnswer(1)">VERIFY ACCURACY</button>
             <div class="status-msg" id="msg1"></div>
@@ -227,17 +242,17 @@
         </div>
     </div>
 
-    <!-- TAB 2: LIFE EXPANSION -->
+    <!-- TAB 2 -->
     <div class="panel" id="panel2">
         <h2>Quiz of Mastery: Life Expansion</h2>
-        <p><strong>Initiation:</strong> Decode the biological metrics encoded deep within the frequency layers of track 2.</p>
+        <p><strong>Initiation:</strong> Listen completely to progress past current cellular blocks.</p>
         
-        <div style="background:#000; padding:20px; text-align:center; border:1px solid #222; margin-bottom:20px;">
-            🎵 [ Audio Integration Area: Place Track 02 Link or Embed Here ]
-        </div>
+        <audio controls id="audio2">
+            <source src="audio/song2.mp3" type="audio/mpeg">
+        </audio>
 
         <div class="quiz-section">
-            <p><strong>Written Verification Question:</strong> Type the specific absolute number stated during the biological syncopation phase.</p>
+            <p id="qText2"><strong>Written Verification Question:</strong> What color is a fire truck?</p>
             <input type="text" id="ans2" placeholder="Provide answer here..." autocomplete="off">
             <button class="submit-btn" onclick="checkAnswer(2)">VERIFY ACCURACY</button>
             <div class="status-msg" id="msg2"></div>
@@ -251,17 +266,17 @@
         </div>
     </div>
 
-    <!-- TAB 3: DICK EXPANSION -->
+    <!-- TAB 3 -->
     <div class="panel" id="panel3">
         <h2>Quiz of Mastery: Dick Expansion</h2>
-        <p><strong>Initiation:</strong> Test your direct focus against the mental reality-warping layers of track 3.</p>
+        <p><strong>Initiation:</strong> Absolute sensory focus required.</p>
         
-        <div style="background:#000; padding:20px; text-align:center; border:1px solid #222; margin-bottom:20px;">
-            🎵 [ Audio Integration Area: Place Track 03 Link or Embed Here ]
-        </div>
+        <audio controls id="audio3">
+            <source src="audio/song3.mp3" type="audio/mpeg">
+        </audio>
 
         <div class="quiz-section">
-            <p><strong>Written Verification Question:</strong> What truth or phrase does the voice whisper beneath the static loop?</p>
+            <p id="qText3"><strong>Written Verification Question:</strong> What is the opposite of up?</p>
             <input type="text" id="ans3" placeholder="Provide answer here..." autocomplete="off">
             <button class="submit-btn" onclick="checkAnswer(3)">VERIFY ACCURACY</button>
             <div class="status-msg" id="msg3"></div>
