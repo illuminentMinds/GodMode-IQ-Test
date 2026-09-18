@@ -5,7 +5,7 @@
     --text-color: #e0e0e0;
     --locked-color: #2a2a2a;
     --success-color: #d4af37; 
-    --error-color: #8b0000; /* Deep Red */
+    --error-color: #8b0000;
     --border-color: #1a1a1a;
 }
 
@@ -24,18 +24,26 @@ body {
 
 header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     max-width: 850px;
 }
 
 h1 {
     font-family: 'Cinzel', serif;
     color: var(--accent-color);
-    font-size: 38px;
+    font-size: 42px;
     letter-spacing: 8px;
     text-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
-    margin-bottom: 5px;
+    margin-bottom: 0px;
     font-weight: 700;
+}
+
+.sub-title-main {
+    font-family: 'Courier Prime', monospace;
+    color: #fff;
+    letter-spacing: 5px;
+    font-size: 18px;
+    margin-top: 10px;
 }
 
 .difficulty-indicator {
@@ -59,10 +67,10 @@ h1 {
 }
 
 .warning-box {
-    color: #8b0000;
-    border: 1px solid #8b0000;
+    color: #d4af37;
+    border: 1px solid rgba(212, 175, 55, 0.3);
     padding: 20px;
-    background-color: rgba(139, 0, 0, 0.05);
+    background-color: rgba(212, 175, 55, 0.03);
     margin-bottom: 40px;
     text-align: left;
     line-height: 1.8;
@@ -92,8 +100,8 @@ h1 {
     font-weight: bold;
     transition: all 0.3s ease;
     white-space: nowrap;
-    letter-spacing: 2px;
-    font-size: 14px;
+    letter-spacing: 1px;
+    font-size: 13px;
 }
 
 .tab-btn.unlocked {
@@ -139,8 +147,8 @@ h1 {
 .panel h2 {
     font-family: 'Cinzel', serif;
     margin-top: 0;
-    font-size: 26px;
-    letter-spacing: 3px;
+    font-size: 24px;
+    letter-spacing: 2px;
     color: var(--accent-color);
     border-bottom: 1px solid #222;
     padding-bottom: 15px;
@@ -175,6 +183,15 @@ h1 {
     line-height: 1.5;
 }
 
+.script-quote {
+    background: #000000;
+    border-left: 3px solid var(--accent-color);
+    padding: 12px 18px;
+    margin: 15px 0;
+    font-style: italic;
+    color: #fff;
+}
+
 .quiz-section, .milestone-section {
     margin-top: 35px;
     border-top: 1px solid #222;
@@ -200,7 +217,6 @@ h1 {
     letter-spacing: 2px;
 }
 
-/* FIXED INPUT FIELD STYLING */
 input[type="text"] {
     width: 100%;
     background-color: #0a0a0a;
@@ -227,7 +243,6 @@ input[type="text"]:focus {
     box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
 }
 
-/* Remove default webkit background auto-fill behavior for dark mode */
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
