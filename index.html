@@ -35,14 +35,25 @@
             color: var(--accent-color);
             letter-spacing: 4px;
             text-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
+            margin-bottom: 5px;
         }
 
-        .warning {
+        .subtitle {
+            font-size: 14px;
+            color: #888;
+            margin-top: 0;
+            letter-spacing: 2px;
+        }
+
+        .warning-box {
             color: #ffcc00;
             font-weight: bold;
             border: 1px dashed #ffcc00;
-            padding: 10px;
-            background-color: rgba(255, 204, 0, 0.1);
+            padding: 15px;
+            background-color: rgba(255, 204, 0, 0.05);
+            margin-bottom: 25px;
+            text-align: left;
+            line-height: 1.6;
         }
 
         .tabs {
@@ -63,6 +74,7 @@
             font-weight: bold;
             transition: all 0.3s ease;
             white-space: nowrap;
+            letter-spacing: 1px;
         }
 
         .tab-btn.unlocked {
@@ -94,14 +106,14 @@
         }
 
         .quiz-section, .milestone-section {
-            margin-top: 20px;
-            border-top: 1px solid #333;
+            margin-top: 25px;
+            border-top: 1px solid #222;
             padding-top: 20px;
         }
 
         .milestone-section {
-            background-color: rgba(0, 255, 102, 0.05);
-            border: 1px solid rgba(0, 255, 102, 0.2);
+            background-color: rgba(0, 255, 102, 0.03);
+            border: 1px solid rgba(0, 255, 102, 0.15);
             padding: 20px;
             display: none;
         }
@@ -110,10 +122,18 @@
             display: block;
         }
 
+        .script-quote {
+            background: #000;
+            border-left: 3px solid var(--accent-color);
+            padding: 10px 15px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+
         input[type="text"] {
             width: 100%;
             background-color: #000;
-            border: 1px solid #444;
+            border: 1px solid #333;
             color: var(--success-color);
             padding: 12px;
             font-family: inherit;
@@ -136,6 +156,7 @@
             cursor: pointer;
             font-family: inherit;
             font-weight: bold;
+            letter-spacing: 1px;
         }
 
         button.submit-btn:hover {
@@ -147,10 +168,11 @@
             background-color: var(--success-color);
             color: #000;
             border-color: var(--success-color);
+            cursor: default;
         }
 
         .status-msg {
-            margin-top: 10px;
+            margin-top: 12px;
             font-size: 14px;
             font-weight: bold;
         }
@@ -163,100 +185,88 @@
 
     <header>
         <h1>GOD MODE IQ TEST</h1>
-        <p class="warning">⚠️ ENTER AT YOUR OWN RISK: MIGHT MAKE YOU FEEL DUMB. CHOOSE COMPREHENSION OR CHOOSE IGNORANCE.</p>
+        <div class="subtitle">COMPLETE CONTROL OR MASTERY OF THE SENSES EQUAL IMMORTALITY</div>
     </header>
 
-    <div class="tabs" id="tabsContainer">
-        <button class="tab-btn unlocked active" onclick="switchTab(1)" id="btn-tab1">PHASE 1: SENSORY</button>
-        <button class="tab-btn" onclick="switchTab(2)" id="btn-tab2">PHASE 2: VELOCITY</button>
-        <button class="tab-btn" onclick="switchTab(3)" id="btn-tab3">PHASE 3: COGNITIVE</button>
-        <button class="tab-btn" onclick="switchTab(4)" id="btn-tab4">PHASE 4: SPECTACLE</button>
+    <div class="warning-box">
+        ⚠️ ENTER AT YOUR OWN RISK (might make you feel dumb)<br><br>
+        If you don't understand this song the first time it's ok, this song trains you for god mode. 
+        You ever notice there's a select few people that come in your life that have some kind of superhuman ability? 
+        That can be you.
     </div>
 
-    <!-- PANEL 1 -->
+    <!-- Tab Navigation Panel (Strictly matching your requested names) -->
+    <div class="tabs" id="tabsContainer">
+        <button class="tab-btn unlocked active" onclick="switchTab(1)" id="btn-tab1">IQ EXPANSION</button>
+        <button class="tab-btn" onclick="switchTab(2)" id="btn-tab2">LIFE EXPANSION</button>
+        <button class="tab-btn" onclick="switchTab(3)" id="btn-tab3">DICK EXPANSION</button>
+        <button class="tab-btn" onclick="switchTab(4)" id="btn-tab4">STRENGTH EXPANSION</button>
+    </div>
+
+    <!-- TAB 1: IQ EXPANSION -->
     <div class="panel active" id="panel1">
-        <h2>Phase 1: Auditory Gateway</h2>
-        <p><strong>Instructions:</strong> Listen to the initialization audio loop entirely. Decipher the pattern hidden within the white noise layer.</p>
+        <h2>Quiz of Mastery: IQ Expansion</h2>
+        <p><strong>Initiation:</strong> You must be able to understand this song all the way through. Listen carefully to discover the sequence key.</p>
         
-        <div style="background:#000; padding:20px; text-align:center; border:1px solid #333; margin-bottom:20px;">
-            🎵 [ Audio Player: Placeholder For Training Track 01 ]
+        <div style="background:#000; padding:20px; text-align:center; border:1px solid #222; margin-bottom:20px;">
+            🎵 [ Audio Integration Area: Place Track 01 Link or Embed Here ]
         </div>
 
         <div class="quiz-section">
-            <p><strong>Question:</strong> What exact word is whispered backwards at the 1-minute mark?</p>
-            <input type="text" id="ans1" placeholder="Type your answer here..." autocomplete="off">
-            <button class="submit-btn" onclick="checkAnswer(1)">VERIFY COMPREHENSION</button>
+            <p><strong>Written Verification Question:</strong> What core terminal concept or message is revealed in the center frame of the song sequence?</p>
+            <input type="text" id="ans1" placeholder="Provide answer here..." autocomplete="off">
+            <button class="submit-btn" onclick="checkAnswer(1)">VERIFY ACCURACY</button>
             <div class="status-msg" id="msg1"></div>
         </div>
 
         <div class="milestone-section" id="mile1">
-            <h3>⚡ REAL WORLD OPERATION UNLOCKED: THE RITE OF THE ASH</h3>
-            <p>You must steal a close friend's sock. <strong>The Catch:</strong> You must actively wear the sock on your own foot while stealing it. Once secured, take it to a historic tombstone and burn it to ashes.</p>
-            <button class="action-btn" onclick="completeMilestone(1)" id="mileBtn1">MARK OPERATION COMPLETE</button>
+            <h3>⚡ REAL WORLD MILESTONE OPERATION UNLOCKED</h3>
+            <p><strong>Operation: The Rite of the Ash</strong></p>
+            <p>You must steal a close friend's sock. <strong>The Catch:</strong> You must be actively wearing the stolen sock on your own foot while you are stealing it. Once secured, take it to a historic tombstone and burn it to ashes.</p>
+            <button class="action-btn" onclick="completeMilestone(1)" id="mileBtn1">SUBMIT PROOF & COMPLETED MILESTONE</button>
         </div>
     </div>
 
-    <!-- PANEL 2 -->
+    <!-- TAB 2: LIFE EXPANSION -->
     <div class="panel" id="panel2">
-        <h2>Phase 2: Velocity & Chaos</h2>
-        <p><strong>Instructions:</strong> Track the double-time lyrical shifts. High temporal processing capacity is mandatory.</p>
+        <h2>Quiz of Mastery: Life Expansion</h2>
+        <p><strong>Initiation:</strong> Decode the biological metrics encoded deep within the frequency layers of track 2.</p>
         
-        <div style="background:#000; padding:20px; text-align:center; border:1px solid #333; margin-bottom:20px;">
-            🎵 [ Audio Player: Placeholder For Training Track 02 ]
+        <div style="background:#000; padding:20px; text-align:center; border:1px solid #222; margin-bottom:20px;">
+            🎵 [ Audio Integration Area: Place Track 02 Link or Embed Here ]
         </div>
 
         <div class="quiz-section">
-            <p><strong>Question:</strong> What is the syllable count of the third verse line spoken at maximum tempo?</p>
-            <input type="text" id="ans2" placeholder="Type your answer here..." autocomplete="off">
-            <button class="submit-btn" onclick="checkAnswer(2)">VERIFY COMPREHENSION</button>
+            <p><strong>Written Verification Question:</strong> Type the specific absolute number stated during the biological syncopation phase.</p>
+            <input type="text" id="ans2" placeholder="Provide answer here..." autocomplete="off">
+            <button class="submit-btn" onclick="checkAnswer(2)">VERIFY ACCURACY</button>
             <div class="status-msg" id="msg2"></div>
         </div>
 
         <div class="milestone-section" id="mile2">
-            <h3>⚡ REAL WORLD OPERATION UNLOCKED: GRAVITY MASTERY</h3>
-            <p>Acquire a standard commercial shopping cart. Pilot it down a public incline, achieving a verified top speed of <strong>20 mph</strong> via your device's GPS tracker.</p>
-            <button class="action-btn" onclick="completeMilestone(2)" id="mileBtn2">MARK OPERATION COMPLETE</button>
+            <h3>⚡ REAL WORLD MILESTONE OPERATION UNLOCKED</h3>
+            <p><strong>Operation: Velocity Mastery</strong></p>
+            <p>Acquire a standard commercial shopping cart. Take the shopping cart downhill while achieving a verified velocity of exactly <strong>20mph</strong> via GPS.</p>
+            <button class="action-btn" onclick="completeMilestone(2)" id="mileBtn2">SUBMIT PROOF & COMPLETED MILESTONE</button>
         </div>
     </div>
 
-    <!-- PANEL 3 -->
+    <!-- TAB 3: DICK EXPANSION -->
     <div class="panel" id="panel3">
-        <h2>Phase 3: Cognitive Overwrite</h2>
-        <p><strong>Instructions:</strong> Defeat the linguistic reality virus. Do not let the overlapping channels split your attention.</p>
+        <h2>Quiz of Mastery: Dick Expansion</h2>
+        <p><strong>Initiation:</strong> Test your direct focus against the mental reality-warping layers of track 3.</p>
         
-        <div style="background:#000; padding:20px; text-align:center; border:1px solid #333; margin-bottom:20px;">
-            🎵 [ Audio Player: Placeholder For Training Track 03 ]
+        <div style="background:#000; padding:20px; text-align:center; border:1px solid #222; margin-bottom:20px;">
+            🎵 [ Audio Integration Area: Place Track 03 Link or Embed Here ]
         </div>
 
         <div class="quiz-section">
-            <p><strong>Question:</strong> What name does the secondary speaker claim to have before the signal distorts?</p>
-            <input type="text" id="ans3" placeholder="Type your answer here..." autocomplete="off">
-            <button class="submit-btn" onclick="checkAnswer(3)">VERIFY COMPREHENSION</button>
+            <p><strong>Written Verification Question:</strong> What truth or phrase does the voice whisper beneath the static loop?</p>
+            <input type="text" id="ans3" placeholder="Provide answer here..." autocomplete="off">
+            <button class="submit-btn" onclick="checkAnswer(3)">VERIFY ACCURACY</button>
             <div class="status-msg" id="msg3"></div>
         </div>
 
         <div class="milestone-section" id="mile3">
-            <h3>⚡ REAL WORLD OPERATION UNLOCKED: THE IDENTITY GLITCH</h3>
-            <p>Using pure psychological framing, successfully convince an acquaintance that their entire identity is a fabrication, they are living a lie, and they are actually someone else.</p>
-            <button class="action-btn" onclick="completeMilestone(3)" id="mileBtn3">MARK OPERATION COMPLETE</button>
-        </div>
-    </div>
-
-    <!-- PANEL 4 -->
-    <div class="panel" id="panel4">
-        <h2>Phase 4: Public Spectacle</h2>
-        <p><strong>Instructions:</strong> Complete processing of the ultimate frequency loop.</p>
-        
-        <div style="background:#000; padding:20px; text-align:center; border:1px solid #333; margin-bottom:20px;">
-            🎵 [ Audio Player: Placeholder For Training Track 04 ]
-        </div>
-
-        <div class="quiz-section">
-            <p><strong>Question:</strong> State the baseline geometric solution given in the final audio segment.</p>
-            <input type="text" id="ans4" placeholder="Type your answer here..." autocomplete="off">
-            <button class="submit-btn" onclick="checkAnswer(4)">VERIFY COMPREHENSION</button>
-            <div class="status-msg" id="msg4"></div>
-        </div>
-
-        <div class="milestone-section" id="mile4">
-            <h3>⚡ REAL WORLD OPERATION UNLOCKED: THE DARK KNIGHT PROTOCOL</h3>
+            <h3>⚡ REAL WORLD MILESTONE OPERATION UNLOCKED</h3>
+            <p><strong>Operation: The Identity Glitch</strong></p>
