@@ -5,37 +5,37 @@ const TAB_QUESTIONS = {
         { rank: "BEGINNER", q: "What is 1 + 1?", a: "2" },
         { rank: "BEGINNER", q: "What color is a banana?", a: "yellow" },
         { rank: "DEMI-GOD", q: "What is the square root of 81?", a: "9" },
-        { rank: "GOD MODE", q: "[AUDIO REQUIRED] Type the first word spoken in the song.", a: "listen" }
+        { rank: "GOD MODE", q: "[AUDIO REQUIRED] Type the first word spoken in the song.", a: "tap" }
     ],
     2: [
         { rank: "BEGINNER", q: "What animal says meow?", a: "cat" },
         { rank: "BEGINNER", q: "How many days are in a week?", a: "7" },
         { rank: "DEMI-GOD", q: "Enter the missing sequence: 2, 4, 6, 8, __?", a: "10" },
-        { rank: "GOD MODE", q: "[AUDIO REQUIRED] What is the specific frequency mentioned at 0:15?", a: "omega" }
+        { rank: "GOD MODE", q: "[AUDIO REQUIRED] What is the specific item mentioned at 0:15?", a: "gun" }
     ],
     3: [
         { rank: "BEGINNER", q: "What is 10 minus 5?", a: "5" },
         { rank: "BEGINNER", q: "Is water wet? (yes/no)", a: "yes" },
         { rank: "DEMI-GOD", q: "What planet do we live on?", a: "earth" },
-        { rank: "GOD MODE", q: "[AUDIO REQUIRED] Enter the 4-digit numeric code embedded in the bassline.", a: "9364" }
+        { rank: "GOD MODE", q: "[AUDIO REQUIRED] Was there a woman in the car?", a: "yes" }
     ],
     4: [
         { rank: "BEGINNER", q: "What shape is a standard tire?", a: "circle" },
         { rank: "BEGINNER", q: "How many legs does a spider have?", a: "8" },
         { rank: "DEMI-GOD", q: "If you freeze water, it becomes...", a: "ice" },
-        { rank: "GOD MODE", q: "[AUDIO REQUIRED] Transcribe the reversed phrase in the chorus.", a: "awaken" }
+        { rank: "GOD MODE", q: "[AUDIO REQUIRED] Tell us the three main colors you hear between 2:07-2:12. (Use word, word, word format for this question)", a: "purple, blue, orange" }
     ],
     5: [
         { rank: "BEGINNER", q: "What is the opposite of hot?", a: "cold" },
         { rank: "BEGINNER", q: "How many fingers are on a typical human hand?", a: "5" },
         { rank: "DEMI-GOD", q: "What is a baby dog called?", a: "puppy" },
-        { rank: "GOD MODE", q: "[AUDIO REQUIRED] Calculate the duration of silence between the second and third tone.", a: "3.14" }
+        { rank: "GOD MODE", q: "[AUDIO REQUIRED] Who shined the spotlight?", a: "fbi" }
     ],
     6: [
         { rank: "BEGINNER", q: "What letter comes after A?", a: "b" },
         { rank: "BEGINNER", q: "What is 100 + 0?", a: "100" },
         { rank: "DEMI-GOD", q: "What do bees make?", a: "honey" },
-        { rank: "GOD MODE", q: "[AUDIO REQUIRED] Enter the final terminal override code hidden in Track 6.", a: "ascend" }
+        { rank: "GOD MODE", q: "[AUDIO REQUIRED] Who was running with you after getting out of the vehicle. (Use the name given to them in the song)", a: "piggy" }
     ]
 };
 
