@@ -7,7 +7,7 @@ const TAB_QUESTIONS = {
     { rank: "BEGINNER", q: "What is 99 plus 1?", a: "100" },
     { rank: "DEMI-GOD", q: "What is the square root of 81?", a: "9" },
     { rank: "DEMI-GOD", q: "Solve for x: 3x - 7 = 14", a: "7" },
-    { rank: "DEMI-GOD", q: "What is the value of 5 factorial (5!)?", a: "120" },
+    { rank: "DEMI-GOD", q: "What is half of 150?", a: "75" },
     { rank: "DEMI-GOD", q: "What is the next prime number after 7?", a: "11" },
     { rank: "DEMI-GOD", q: "How many sides does a nonagon have?", a: "9" },
     { rank: "GOD MODE", q: "What mathematical term describes a number that cannot be expressed as a fraction of two integers, such as pi?", a: "irrational" },
