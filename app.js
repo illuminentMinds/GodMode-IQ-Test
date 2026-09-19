@@ -110,14 +110,67 @@ const TAB_QUESTIONS = {
   ]
 };
 
+// Default states
 let currentQuestionIndex = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
 let unlockedStages = [1];
 let completedMilestones = [];
 
-// Initialize game on load safely
+// Load saved data from localStorage on startup
+function loadGameProgress() {
+  const savedIndex = localStorage.getItem('illuminent_qIndex');
+  const savedStages = localStorage.getItem('illuminent_unlocked');
+  const savedMilestones = localStorage.getItem('illuminent_milestones');
+
+  if (savedIndex) {
+    try { currentQuestionIndex = JSON.parse(savedIndex); } catch (e) {}
+  }
+  if (savedStages) {
+    try { unlockedStages = JSON.parse(savedStages); } catch (e) {}
+  }
+  if (savedMilestones) {
+    try { completedMilestones = JSON.parse(savedMilestones); } catch (e) {}
+  }
+}
+
+// Save progress to localStorage
+function saveGameProgress() {
+  localStorage.setItem('illuminent_qIndex', JSON.stringify(currentQuestionIndex));
+  localStorage.setItem('illuminent_unlocked', JSON.stringify(unlockedStages));
+  localStorage.setItem('illuminent_milestones', JSON.stringify(completedMilestones));
+}
+
+// Initialize game on load
 window.onload = () => {
+  loadGameProgress();
+
+  // Apply unlocked tab classes visually based on saved data
+  unlockedStages.forEach(stage => {
+    const tabBtn = document.getElementById(`btn-tab${stage}`);
+    if (tabBtn) tabBtn.classList.add('unlocked');
+  });
+
   for (let i = 1; i <= 6; i++) {
-    loadQuestionData(i);
+    const questionArray = TAB_QUESTIONS[i];
+    const qIndex = currentQuestionIndex[i];
+
+    // If they already finished all questions for this tab, hide quiz and show milestone
+    if (qIndex >= questionArray.length) {
+      const quizBox = document.getElementById(`quizBox${i}`);
+      const milestoneEl = document.getElementById(`mile${i}`);
+      if (quizBox) quizBox.style.display = "none";
+      if (milestoneEl) milestoneEl.classList.add('visible');
+
+      // If milestone was also completed, mark button complete
+      if (completedMilestones.includes(i)) {
+        const btn = document.getElementById(`mileBtn${i}`);
+        if (btn) {
+          btn.innerText = "MILESTONE OPERATION VERIFIED ✓";
+          btn.classList.add('complete');
+        }
+      }
+    } else {
+      loadQuestionData(i);
+    }
   }
 };
 
@@ -128,7 +181,6 @@ function loadQuestionData(tabNumber) {
   if (qIndex < questionArray.length) {
     const currentData = questionArray[qIndex];
     
-    // Safety check elements before updating
     const rankEl = document.getElementById(`rankBadge${tabNumber}`);
     const qTextEl = document.getElementById(`q-text-${tabNumber}`);
     const ansEl = document.getElementById(`ans${tabNumber}`);
@@ -171,6 +223,7 @@ function checkAnswer(tabNumber) {
     }
     
     currentQuestionIndex[tabNumber]++;
+    saveGameProgress(); // Save state immediately
     
     setTimeout(() => {
       if (msgEl) msgEl.style.display = "none";
@@ -201,11 +254,15 @@ function completeMilestone(phaseNumber) {
     btn.innerText = "MILESTONE OPERATION VERIFIED ✓";
     btn.classList.add('complete');
   }
+
+  saveGameProgress(); // Save state immediately
   
   const nextPhase = phaseNumber + 1;
   if (TAB_QUESTIONS[nextPhase]) {
     if (!unlockedStages.includes(nextPhase)) {
       unlockedStages.push(nextPhase);
+      saveGameProgress(); // Save updated unlocked stages
+      
       const nextTabBtn = document.getElementById(`btn-tab${nextPhase}`);
       if (nextTabBtn) nextTabBtn.classList.add('unlocked');
       
