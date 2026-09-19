@@ -119,7 +119,7 @@ const TAB_QUESTIONS = {
 
 // Tracks which question index the user is currently on for each tab (Starts at 0 for all)
 let currentQuestionIndex = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
-let unlockedStages =;
+let unlockedStages = [1];
 let completedMilestones = [];
 
 // Initialize game on load
