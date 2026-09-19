@@ -1,8 +1,6 @@
 // Each tab now has its own progression array.
-// You can add as many questions as you want inside these brackets to make the gauntlet longer.
 const TAB_QUESTIONS = {
   1: [
-    // Theme: Mathematics Progression
     { rank: "BEGINNER", q: "What is 1 + 1?", a: "2" },
     { rank: "BEGINNER", q: "What color is a banana?", a: "yellow" },
     { rank: "BEGINNER", q: "What is 12 x 5?", a: "60" },
@@ -21,7 +19,6 @@ const TAB_QUESTIONS = {
     { rank: "GOD MODE", q: "[AUDIO REQUIRED] Type the first word spoken in the song.", a: "tap" }
   ],
   2: [
-    // Theme: World History & Timelines
     { rank: "BEGINNER", q: "What animal says meow?", a: "cat" },
     { rank: "BEGINNER", q: "How many days are in a week?", a: "7" },
     { rank: "BEGINNER", q: "In which country are the ancient pyramids of Giza located?", a: "egypt" },
@@ -40,7 +37,6 @@ const TAB_QUESTIONS = {
     { rank: "GOD MODE", q: "[AUDIO REQUIRED] What is the specific item mentioned at 0:15?", a: "gun" }
   ],
   3: [
-    // Theme: Dick Growth, Male Development & Anatomy
     { rank: "BEGINNER", q: "What is 10 minus 5?", a: "5" },
     { rank: "BEGINNER", q: "Is water wet? (yes/no)", a: "yes" },
     { rank: "BEGINNER", q: "What muscular organ pumps blood continuously through your entire body?", a: "heart" },
@@ -59,7 +55,6 @@ const TAB_QUESTIONS = {
     { rank: "GOD MODE", q: "[AUDIO REQUIRED] Was there a woman in the car?", a: "yes" }
   ],
   4: [
-    // Theme: Geography & Planetary Landmarks
     { rank: "BEGINNER", q: "What shape is a standard tire?", a: "circle" },
     { rank: "BEGINNER", q: "How many legs does a spider have?", a: "8" },
     { rank: "BEGINNER", q: "What is the capital city of France?", a: "paris" },
@@ -78,7 +73,6 @@ const TAB_QUESTIONS = {
     { rank: "GOD MODE", q: "[AUDIO REQUIRED] Tell us the three main colors you hear between 2:07-2:12. (Use word, word, word format for this question)", a: "purple, blue, orange" }
   ],
   5: [
-    // Theme: Secret Wealth & Untapped Finance
     { rank: "BEGINNER", q: "What is the opposite of hot?", a: "cold" },
     { rank: "BEGINNER", q: "How many fingers are on a typical human hand?", a: "5" },
     { rank: "BEGINNER", q: "Who wrote the iconic tragedy play Romeo and Juliet?", a: "william shakespeare" },
@@ -97,7 +91,6 @@ const TAB_QUESTIONS = {
     { rank: "GOD MODE", q: "[AUDIO REQUIRED] Who shined the spotlight?", a: "fbi" }
   ],
   6: [
-    // Theme: Language, Encryption & Cryptology
     { rank: "BEGINNER", q: "What letter comes after A?", a: "b" },
     { rank: "BEGINNER", q: "What is 100 + 0?", a: "100" },
     { rank: "BEGINNER", q: "What is the linguistic term for a word that means the direct opposite of another?", a: "antonym" },
@@ -117,14 +110,13 @@ const TAB_QUESTIONS = {
   ]
 };
 
-// Tracks which question index the user is currently on for each tab (Starts at 0 for all)
 let currentQuestionIndex = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
 let unlockedStages = [1];
 let completedMilestones = [];
 
-// Initialize game on load
+// Initialize game on load safely
 window.onload = () => {
-  for(let i = 1; i <= 6; i++) {
+  for (let i = 1; i <= 6; i++) {
     loadQuestionData(i);
   }
 };
@@ -133,12 +125,17 @@ function loadQuestionData(tabNumber) {
   const qIndex = currentQuestionIndex[tabNumber];
   const questionArray = TAB_QUESTIONS[tabNumber];
   
-  // If they haven't finished all questions yet
   if (qIndex < questionArray.length) {
     const currentData = questionArray[qIndex];
-    document.getElementById(`rankBadge${tabNumber}`).innerText = `RANK: ${currentData.rank}`;
-    document.getElementById(`q-text-${tabNumber}`).innerText = currentData.q;
-    document.getElementById(`ans${tabNumber}`).value = ""; // Clear box
+    
+    // Safety check elements before updating
+    const rankEl = document.getElementById(`rankBadge${tabNumber}`);
+    const qTextEl = document.getElementById(`q-text-${tabNumber}`);
+    const ansEl = document.getElementById(`ans${tabNumber}`);
+    
+    if (rankEl) rankEl.innerText = `RANK: ${currentData.rank}`;
+    if (qTextEl) qTextEl.innerText = currentData.q;
+    if (ansEl) ansEl.value = "";
   }
 }
 
@@ -148,42 +145,50 @@ function switchTab(phaseNumber) {
     return;
   }
   document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-  document.getElementById(`btn-tab${phaseNumber}`).classList.add('active');
+  const targetTab = document.getElementById(`btn-tab${phaseNumber}`);
+  if (targetTab) targetTab.classList.add('active');
   
   document.querySelectorAll('.panel').forEach(panel => panel.classList.remove('active'));
-  document.getElementById(`panel${phaseNumber}`).classList.add('active');
+  const targetPanel = document.getElementById(`panel${phaseNumber}`);
+  if (targetPanel) targetPanel.classList.add('active');
 }
 
 function checkAnswer(tabNumber) {
-  const inputVal = document.getElementById(`ans${tabNumber}`).value.trim().toLowerCase();
+  const ansInput = document.getElementById(`ans${tabNumber}`);
+  if (!ansInput) return;
+  
+  const inputVal = ansInput.value.trim().toLowerCase();
   const qIndex = currentQuestionIndex[tabNumber];
   const questionArray = TAB_QUESTIONS[tabNumber];
   const currentData = questionArray[qIndex];
   const msgEl = document.getElementById(`msg${tabNumber}`);
   
   if (inputVal === currentData.a) {
-    msgEl.className = "status-msg success";
-    msgEl.innerText = "✓ ACCURACY DETECTED. PREPARING NEXT QUERY...";
+    if (msgEl) {
+      msgEl.className = "status-msg success";
+      msgEl.style.display = "block";
+      msgEl.innerText = "✓ ACCURACY DETECTED. PREPARING NEXT QUERY...";
+    }
     
-    // Progress to next question
     currentQuestionIndex[tabNumber]++;
     
     setTimeout(() => {
-      msgEl.style.display = "none";
+      if (msgEl) msgEl.style.display = "none";
       if (currentQuestionIndex[tabNumber] < questionArray.length) {
-        // Load next question
         loadQuestionData(tabNumber);
       } else {
-        // Finished all questions for this tab! Show Milestone.
-        document.getElementById(`quizBox${tabNumber}`).style.display = "none";
+        const quizBox = document.getElementById(`quizBox${tabNumber}`);
         const milestoneEl = document.getElementById(`mile${tabNumber}`);
-        milestoneEl.classList.add('visible');
+        if (quizBox) quizBox.style.display = "none";
+        if (milestoneEl) milestoneEl.classList.add('visible');
       }
-    }, 1200); // Wait a second so they see the success message
+    }, 1200);
   } else {
-    msgEl.className = "status-msg error";
-    msgEl.style.display = "block";
-    msgEl.innerText = "❌ ZERO COMPREHENSION. SENSORY REJECTION DETECTED.";
+    if (msgEl) {
+      msgEl.className = "status-msg error";
+      msgEl.style.display = "block";
+      msgEl.innerText = "❌ ZERO COMPREHENSION. SENSORY REJECTION DETECTED.";
+    }
   }
 }
 
@@ -192,23 +197,23 @@ function completeMilestone(phaseNumber) {
   if (!completedMilestones.includes(phaseNumber)) {
     completedMilestones.push(phaseNumber);
   }
-  btn.innerText = "MILESTONE OPERATION VERIFIED ✓";
-  btn.classList.add('complete');
+  if (btn) {
+    btn.innerText = "MILESTONE OPERATION VERIFIED ✓";
+    btn.classList.add('complete');
+  }
   
   const nextPhase = phaseNumber + 1;
   if (TAB_QUESTIONS[nextPhase]) {
-    // Unlock next tab
     if (!unlockedStages.includes(nextPhase)) {
       unlockedStages.push(nextPhase);
       const nextTabBtn = document.getElementById(`btn-tab${nextPhase}`);
-      nextTabBtn.classList.add('unlocked');
+      if (nextTabBtn) nextTabBtn.classList.add('unlocked');
       
       setTimeout(() => {
         switchTab(nextPhase);
       }, 600);
     }
   } else {
-    // Beaten the entire game
     alert("GOD MODE MAXIMA RECOGNIZED. INDEPENDENT REALITY ARCHITECT ASCENSION REACHED.");
     document.body.style.backgroundImage = "radial-gradient(circle at center, #d4af37 0%, #000 100%)";
   }
